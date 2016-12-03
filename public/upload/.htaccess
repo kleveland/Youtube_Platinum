@@ -1,0 +1,4 @@
+AuthType Basic
+AuthName "UNCTalentUpload"
+AuthUserFile "/home2/thebkangsta/.htpasswds/public_html/unctalent.com/upload/passwd"
+require valid-user
