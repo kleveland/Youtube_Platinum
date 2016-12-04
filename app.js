@@ -4,10 +4,22 @@
 	var app = express();
 	var path = require('path');
 	var passport = require('passport');
+	var phpExpress = require('php-express')({
 
-	app.set('views', __dirname + '/views');
+		// assumes php is in your PATH
+		binPath: 'php'
+	});
+
+	app.set('views', path.join(__dirname, 'views'));
+	app.engine('php', phpExpress.engine);
+	app.set('view engine', 'php');
+	app.all(/.+\.php$/, phpExpress.router);
 	app.use(express.static(path.join(__dirname, 'public')));
-	app.use(require('express-session')({ secret: 'keyboard cat', resave: true, saveUninitialized: true }));
+	app.use(require('express-session')({
+		secret: 'keyboard cat',
+		resave: true,
+		saveUninitialized: true
+	}));
 	app.use(passport.initialize());
 	app.use(passport.session());
 
