@@ -1,0 +1,16 @@
+Account Creation
+- POST http://youtubeplatinum.com/register
+
+Account Settings
+- UPDATE http://youtubeplatinum.com/settings/avatar
+- UPDATE http://youtubeplatinum.com/settings/username
+	
+Data Retrieval
+- GET http://youtubeplatinum.com/api/playlists?id
+	- Gets all playlist based off current session ID or custom playlist id
+
+- GET http://youtubeplatinum.com/api/videos?playlist_id
+	- Gets all videos within specific playlist
+
+- GET http://youtubeplatinum.com/api/videos?video_id
+	- Get specific video based off video id

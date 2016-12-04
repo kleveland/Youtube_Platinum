@@ -1,0 +1,18 @@
+Users
+- id (int) PRIMARY KEY | A_I
+- username (varchar) | REQUIRED
+- password (varchar) | REQUIRED
+- avatar (varchar)
+
+
+Playlists
+- id (int) PRIMARY KEY | A_I
+- name (varchar) | REQUIRED
+- user_id (int) | REQUIRED
+
+
+Videos
+- id (int) PRIMARY KEY | A_I
+- url (varchar) | REQUIRED
+- thumbnail (varchar) | REQUIRED
+- playlist_id (int) | REQUIRED
