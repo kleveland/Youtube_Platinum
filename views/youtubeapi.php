@@ -60,9 +60,6 @@
             </ul>
             -->
 
-
-
-
             <!-- SHOW/HIDE FUNCTION | Modernizr -->
             <script>
                 $( document ).ready(function() {
