@@ -22,23 +22,14 @@
         <div class="info-overlay">
             <!-- MIDDLE TEXT -->
             <div class="row-fluid info-middle">
-                <h1 class="text-center text-large uppercase text-white">
+                <h1 class="text-center text-large uppercase text-black" style="padding-bottom: 20px;font-weight:100;">
                     YouTube Platinum
                 </h1>
-                <button class="btn-danger" href="/auth/google">Login With Google</button>
+                <a class="button btn-danger login-btn" href="/auth/google">Login With Google</a>
             </div>
             <!-- END OF MIDDLE TEXT -->
-
         </div>
         <!-- END OF INFO OVERLAY -->
-        <!-- VIDEO HEADER -->
-        <div class="video-container">
-            <div class="video-pattern"></div>
-            <video id="video" poster="assets/images/videostill.jpg" preload="auto" loop="true" autoplay="true" muted>
-                <source type="video/webm" src="videoheader/promo2.webm" />
-            </video>
-        </div>
-        <!-- END OF VIDEO HEADER -->
     </div>
     <!-- END OF HEADER -->
 
