@@ -1,16 +1,22 @@
 module.exports = function (app, passport) {
-	
+
 	require('./login')(app, passport);
-	
+	require('./user')(app, passport);
+
 	app.get('/', function (req, res) {
-		console.log("USER: ", JSON.stringify(req.user._json.image.url));
+		//console.log("USER: ", JSON.stringify(req.user._json.image.url));
 		console.log("MAIN PAGE");
-		res.render('index.php', {
-            get: {
-                name: req.user.displayName,
-				image: req.user._json.image.url
-            }
-		});
+		if (req.user) {
+			console.log("USER: ", JSON.stringify(req.user));
+			res.render('index.php', {
+				get: {
+					name: req.user.first + req.user.last,
+					image: req.user.prof_img
+				}
+			});
+		} else {
+			res.redirect('/login');
+		}
 	});
-	
+
 }

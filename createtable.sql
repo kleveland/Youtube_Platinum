@@ -1,7 +1,9 @@
 CREATE TABLE `Users` (
 	`id` SMALLINT(5) unsigned NOT NULL AUTO_INCREMENT,
-	`username` VARCHAR(30) NOT NULL,
-	`password` VARCHAR(30) NOT NULL,
+	`google_id` BIGINT(30) NOT NULL,
+	`first` VARCHAR(30) NOT NULL,
+	`last` VARCHAR(30) NOT NULL,
+	`prof_img` VARCHAR(30) NOT NULL,
 	PRIMARY KEY (`id`)
 ) ENGINE=InnoDB;
 

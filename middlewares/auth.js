@@ -1,5 +1,5 @@
 User = require('../models/user')
-//var passport = require('passport');
+	//var passport = require('passport');
 var GoogleStrategy = require('passport-google-oauth20').Strategy;
 /*
 GoogleStrategy.prototype.userProfile = function (token, done) {
@@ -22,8 +22,10 @@ module.exports = function (passport) {
 			callbackURL: "http://localhost:3000/auth/google/callback"
 		},
 		function (accessToken, refreshToken, profile, cb) {
-			console.log("PROFILEID: " + profile.id);
-			return cb(null, profile);
+			User.findOrCreate(profile, function (err,user) {
+				console.log("PROFILEID: " + JSON.stringify(err,user));
+				return cb(err, user);
+			});
 		}
 	));
 }
