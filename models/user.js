@@ -1,10 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	host: "192.185.5.219",
-	port: 3306,
-	user: "thebkangsta",
-	password: "123456Qwerty",
-	database: "thebkang_yp"
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "youtube_platinum"
 });
 
 exports.findOrCreate = function (prof, callback) {
