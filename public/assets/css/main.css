@@ -1093,3 +1093,86 @@ input[type="date"] {
 div #slider {
     margin: 40px 20px 0 20px;
 }
+.fix-width{
+    width: 1280px;
+    height: 100px;
+    border-style: solid;
+    border-width: 5px;
+}
+
+.menu{
+    float: left;
+}
+
+.menu-logo{
+    float: left;
+    padding: 30px;
+    width: 100px;
+    height: 100px;
+}
+
+.profile{
+    float: right;
+}
+.profile-name{
+    float: left;
+}
+.profile-picture{
+    float: right;
+}
+
+.left-header {
+    float: left;
+    width: 50%;
+    height: 100px;
+
+}
+.right-header{
+    float: right;
+    width: 50%;
+    height: 100px;
+}
+ul.links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+li.listlinks{
+    float: left;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+.youtubeplatplayer{
+    height: 800px;
+    width: 1280px;
+    padding-top: 200px;
+}
+
+.video-player{
+    float: left;
+    padding-left: 150px;
+    padding-top: 100px;
+
+}
+.play-queue{
+    float: right;
+    height: 800px;
+    width: 300px;
+    font-family: times, Times New Roman, times-roman, georgia, serif;
+    color: #444;
+    margin: 0;
+    padding: 0px 0px 6px 0px;
+    font-size: 51px;
+    line-height: 44px;
+    letter-spacing: -2px;
+    font-weight: bold;
+    border-style: solid;
+    border-width: medium;
+}
