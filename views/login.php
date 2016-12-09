@@ -24,7 +24,7 @@
 		<div class="info-overlay">
 			<!-- MIDDLE TEXT -->
 			<div class="row-fluid info-middle">
-				<h1 class="text-center text-large uppercase text-black" style="padding-bottom: 20px;font-weight:100;">
+				<h1 class="text-center text-large uppercase text-white" style="padding-bottom: 20px;font-weight:100;">
 					YouTube Platinum
 				</h1>
 				<?php
