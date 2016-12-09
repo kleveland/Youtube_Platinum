@@ -16,43 +16,58 @@
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-    <header id="header" class="ml-header" style="position: fixed; margin-top: 0px; height: 62px; top: 0px;">
-        <div class="fix-width">
-            <div class="left-header">
-                <a class="menu-logo" href="/">
-                    <img alt="menu" src="assets/images/56763.png" width="15%">
-                </a>
-                <h1 class="text-center text-large uppercase text-black" style="padding-bottom: 20px;font-weight:100;">
-                    YouTube Platinum
-                </h1>
-            </div>
-            <div class="right-header">
-                <nav class="menu">
-                    <ul class="links">
-                        <li class="listlinks"><a href="#home">Home</a></li>
-                        <li class="listlinks"><a href="#playlist">Playlist</a></li>
-                    </ul>
-                </nav>
-                <div2 class="profile">
-                    <p class="profile-name">
-                        <?php print $_GET['name'] ?>
-                    </p>
-                    <a class="profile-picture" href="/">
-                        <img src="<?php print $_GET['image'] ?>" alt="profile image"/>
+    <div class="app-container">
+        <div class="main-container">
+            <header id="topNav">
+                <div class="navheader container">
+                    <button class="menu pull-left navtext" data-toggle="collapse" data-target=".nav-main-collapse">
+                        <i class="fa fa-bars fa-3x"></i>
+                    </button>
+                    <a class="pull-left navtext" href="/" style="margin-left: 20px;text-decoration: none;">
+                        <h1>YouTube Platinum</h1>
                     </a>
-                </div2>
+                    <ul class="nav pull-right navtext">
+                        <li class="text-small text-white" style="margin-right: 20px;">
+                            Search Bar Here
+                        </li>
+                    </ul>
+                    <ul class="nav pull-right navtext">
+                        <li class="text-small text-white" style="margin-right: 20px;">
+                            <a href="/playlists">My Playlists</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="navbar-collapse nav-main-collapse collapse pull-left">
+                    <nav class="nav-main mega-menu">
+                        <ul class="nav nav-pills nav-main scroll-menu" id="topMain">
+                            <li class="text-small text-white hidetext">
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="text-small text-white hidetext">
+                                <a href="/playlists">My Playlists</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </header>
+
+            <div class="header-container">
+                <div class="info-overlay">
+                    <div class="row-fluid info-middle">
+                        <iframe width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
             </div>
-        </div>
-    </header>
-    <div class="youtubeplatplayer">
-        <div class="video-player">
-            <iframe width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs" frameborder="0" allowfullscreen></iframe>
         </div>
         <div class="play-queue">
-            Play Queue
+            <h1>Play Queue</h1>
+        </div>
+        <div class="footer">
+            <div class="footer-bar">
+
+            </div>
         </div>
     </div>
-
 </body>
 
 </html>
