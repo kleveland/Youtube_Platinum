@@ -17,6 +17,10 @@
     <link href="assets/css/simple-sidebar.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+
+
+
+
     <!-- Sidebar -->
     <div id="wrapper" class="toggled">
         <div id="sidebar-wrapper">
@@ -26,25 +30,10 @@
                     <img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
                 </li>
                 <li>
-                    <a href="#">Dashboard</a>
+                    <a href="#">My Playlists</a>
                 </li>
                 <li>
-                    <a href="#">Shortcuts</a>
-                </li>
-                <li>
-                    <a href="#">Overview</a>
-                </li>
-                <li>
-                    <a href="#">Events</a>
-                </li>
-                <li>
-                    <a href="#">About</a>
-                </li>
-                <li>
-                    <a href="#">Services</a>
-                </li>
-                <li>
-                    <a href="#">Contact</a>
+                    <a href="#">Settings</a>
                 </li>
             </ul>
         </div>
@@ -52,30 +41,27 @@
 
         <div id="page-content-wrapper">
             <div class="app-container">
-                <div class="main-container">
+                <div class="main-container col-md-9 col-sm-3 col-xs-3">
                     <header id="topNav">
                         <div class="navheader container">
-                            <button id="menu-toggle" class="menu pull-left navtext" data-toggle="collapse" data-target=".nav-main-collapse">
-                                <i class="fa fa-bars fa-3x"></i>
-                            </button>
-                            <h1>YouTube Platinum</h1>
-                            <ul class="nav pull-right navtext">
-                                <li class="text-small text-white" style="margin-right: 20px;">
-                                    Search Bar Here
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="navbar-collapse nav-main-collapse collapse pull-left">
-                            <nav class="nav-main mega-menu">
-                                <ul class="nav nav-pills nav-main scroll-menu" id="topMain">
-                                    <li class="text-small text-white hidetext">
-                                        <a href="/">Home</a>
-                                    </li>
-                                    <li class="text-small text-white hidetext">
-                                        <a href="/playlists">My Playlists</a>
-                                    </li>
+                            <div class="col-md-2">
+                                <button id="menu-toggle" class="menu pull-left navtext" data-toggle="collapse" data-target=".nav-main-collapse">
+                                    <i class="fa fa-bars fa-3x"></i>
+                                </button>
+                            </div>
+                            <div class="col-md-5">
+                                <h1>YouTube Platinum</h1>
+                            </div>
+                            <div class="col-md-5">
+                                <ul class="nav pull-right navtext">
+                                    <div class="searchbar">
+                                        <div class="input-group search-bar">
+                                            <input type="text" ng-model="search" class="form-control" ng-enter="send(search)" />
+                                            <span id="submitbut" class="input-group-addon bar-style"><i class="glyphicon glyphicon-search"></i></span>
+                                        </div>
+                                    </div>
                                 </ul>
-                            </nav>
+                            </div>
                         </div>
                     </header>
 
@@ -88,7 +74,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="play-queue">
+                <div class="play-queue col-md-3 col-sm-3 col-xs-3"">
                     <h1>Play Queue</h1>
                 </div>
             </div>
@@ -111,6 +97,11 @@
             $("#wrapper").toggleClass("toggled");
         });
     </script>
+    <script>
+        $.post( "/playlist/testplaylist/4", function() {
+        });
+    </script>
+
 
 </body>
 

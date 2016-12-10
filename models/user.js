@@ -32,16 +32,17 @@ exports.findOrCreate = function (prof, callback) {
 
 exports.addSong = function (userid, playlistname, video, cb) {
 	var dat = {
-		video_id: video.id,
-		thumbnail: video.thumb
+		video_id: video
+		// thumbnail: video.thumb
 	}
-	connection.query('SELECT id FROM playlists WHERE name=' + playlistname, function (err, rows, fields) {
+	connection.query("SELECT id FROM playlists WHERE name='" + playlistname + "'", function (err, rows, fields) {
+		console.log("HERE");
+		console.log(rows[0].id);
 		dat.playlist_id = rows[0].id;
-	});
-
-	connection.query('INSERT INTO videos SET ?', dat, function (err, result) {
-		if (err) throw err;
-		cb();
+		connection.query('INSERT INTO videos SET ?', dat, function (err, result) {
+			if (err) throw err;
+			cb();
+		});
 	});
 }
 
