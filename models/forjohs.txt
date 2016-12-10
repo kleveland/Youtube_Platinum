@@ -1,0 +1,3 @@
+Create
+retrieveSongs(playlistid,cb)
+retrievePlaylists(userid,cb)
