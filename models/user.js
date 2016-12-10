@@ -56,3 +56,15 @@ exports.createPlaylist = function (userid, playlistname, cb) {
 		cb(result.insertId);
 	})
 }
+exports.retrieveSongs(playlistid,cb){
+	connection.query('SELECT id FROM videos WHERE playlist_id=' playlistid, function (err, rows, fields) {
+		if (err) throw err;
+		cb(rows);
+	});
+}
+exports.retrievePlaylists(userid,cb){
+	connection.query('SELECT id FROM playlists WHERE user_id=' userid, function (err, rows, fields) {
+		if (err) throw err;
+		cb(rows);
+	});
+}
