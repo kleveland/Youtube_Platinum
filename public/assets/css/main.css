@@ -1133,8 +1133,6 @@ div #slider {
 
 .profile-name{
     color: #0f0f0f;
-    height: 100%;
-    width: 50%;
 }
 
 
@@ -1143,6 +1141,31 @@ div #slider {
     border-radius: 50%;
     border: 2px solid #000000;
     height: 100%;
+}
 
 
+
+
+
+
+
+
+/* Bootstrap Overrides */
+.navbar-header {
+    float: none;
+}
+.navbar-toggle {
+    display: block;
+}
+.navbar-collapse.collapse {
+    display: none!important;
+}
+.navbar-nav {
+    float: none!important;
+}
+.navbar-nav>li {
+    float: none;
+}
+.navbar-collapse.collapse.in{
+    display:block !important;
 }

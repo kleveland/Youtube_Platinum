@@ -11,7 +11,7 @@ module.exports = function (app, passport) {
 			console.log("USER: ", JSON.stringify(req.user));
 			res.render('index.php', {
 				get: {
-					name: req.user.first + req.user.last,
+					name: req.user.first + " " + req.user.last,
 					image: req.user.prof_img
 				}
 			});

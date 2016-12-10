@@ -16,6 +16,31 @@
     <link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">Brand</a>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+        </button>
+    </div>
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="#">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="navbar-header navbar-right">
+            <p class="navbar-text">
+                <a href="#" class="navbar-link">Username</a>
+            </p>
+        </div>
+    </div>
+</nav>
+
+
+
     <div class="app-container">
         <div class="main-container">
             <header id="topNav">
@@ -23,17 +48,10 @@
                     <button class="menu pull-left navtext" data-toggle="collapse" data-target=".nav-main-collapse">
                         <i class="fa fa-bars fa-3x"></i>
                     </button>
-                    <a class="pull-left navtext" href="/" style="margin-left: 20px;text-decoration: none;">
-                        <h1>YouTube Platinum</h1>
-                    </a>
+                    <h1>YouTube Platinum</h1>
                     <ul class="nav pull-right navtext">
                         <li class="text-small text-white" style="margin-right: 20px;">
                             Search Bar Here
-                        </li>
-                    </ul>
-                    <ul class="nav pull-right navtext">
-                        <li class="text-small text-white" style="margin-right: 20px;">
-                            <a href="/playlists">My Playlists</a>
                         </li>
                     </ul>
                 </div>
@@ -62,15 +80,15 @@
         <div class="play-queue">
             <h1>Play Queue</h1>
         </div>
-        <div class="footer">
-            <div class="footer-bar">
-                <div class="profile">
-                    <p class="profile-name">
-                        <?php print $_GET['name'] ?>
-                    </p>
-                        <img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
-                        </img>
-                </div>
+    </div>
+    <div class="footer">
+        <div class="footer-bar">
+            <div class="profile">
+                <p class="profile-name">
+                    <?php print $_GET['name'] ?>
+                </p>
+                <img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
+                </img>
             </div>
         </div>
     </div>
