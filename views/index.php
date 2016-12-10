@@ -44,12 +44,12 @@
                 <div class="main-container col-md-9 col-sm-3 col-xs-3">
                     <header id="topNav">
                         <div class="navheader container">
-                            <div class="col-md-2">
+                            <div class="col-md-1">
                                 <button id="menu-toggle" class="menu pull-left navtext" data-toggle="collapse" data-target=".nav-main-collapse">
                                     <i class="fa fa-bars fa-3x"></i>
                                 </button>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-6">
                                 <h1>YouTube Platinum</h1>
                             </div>
                             <div class="col-md-5">
@@ -95,10 +95,6 @@
         $("#menu-toggle").click(function(e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
-        });
-    </script>
-    <script>
-        $.post( "/playlist/testplaylist/4", function() {
         });
     </script>
 
