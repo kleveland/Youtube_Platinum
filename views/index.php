@@ -64,7 +64,13 @@
         </div>
         <div class="footer">
             <div class="footer-bar">
-
+                <div class="profile">
+                    <p class="profile-name">
+                        <?php print $_GET['name'] ?>
+                    </p>
+                        <img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
+                        </img>
+                </div>
             </div>
         </div>
     </div>
