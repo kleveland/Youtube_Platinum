@@ -2,6 +2,7 @@ module.exports = function (app, passport) {
 
 	require('./login')(app, passport);
 	require('./user')(app, passport);
+	require('./playlist')(app, passport);
 
 	app.get('/', function (req, res) {
 		//console.log("USER: ", JSON.stringify(req.user._json.image.url));

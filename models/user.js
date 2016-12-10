@@ -1,10 +1,9 @@
 var mysql = require('mysql');
 var connection = mysql.createConnection({
-	host: "192.185.5.219",
-	port: 3306,
-	user: "thebkangsta",
-	password: "123456Qwerty",
-	database: "thebkang_yp"
+	host: "localhost",
+	user: "root",
+	password: "",
+	database: "youtube_platinum"
 });
 
 exports.findOrCreate = function (prof, callback) {
@@ -13,7 +12,7 @@ exports.findOrCreate = function (prof, callback) {
 		if (err) throw err;
 		console.log("ROWS: ", JSON.stringify(rows));
 		if (rows[0]) {
-			callback(err,rows[0]);
+			callback(err, rows[0]);
 		} else {
 			var dat = {
 				google_id: prof.id,
@@ -23,40 +22,36 @@ exports.findOrCreate = function (prof, callback) {
 			};
 			connection.query('INSERT INTO users SET ?', dat, function (err, result) {
 				if (err) throw err;
+				dat.id = result.insertId;
 				console.log("RESULT: ", JSON.stringify(result));
-				callback(err,dat);
+				callback(err, dat);
 			});
 		}
 	});
 }
 
-exports.create = function (user, text, cb) {
-	var comment = {
-		user: user,
-		text: text,
-		date: new Date().toString()
+exports.addSong = function (userid, playlistname, video, cb) {
+	var dat = {
+		video_id: video.id,
+		thumbnail: video.thumb
 	}
+	connection.query('SELECT id FROM playlists WHERE name=' + playlistname, function (err, rows, fields) {
+		dat.playlist_id = rows[0].id;
+	});
 
-	db.save(comment, cb)
+	connection.query('INSERT INTO videos SET ?', dat, function (err, result) {
+		if (err) throw err;
+		cb();
+	});
 }
 
-exports.get = function (id, cb) {
-	db.fetch({
-		id: id
-	}, function (err, docs) {
-		if (err) return cb(err)
-		cb(null, docs[0])
+exports.createPlaylist = function (userid, playlistname, cb) {
+	var dat = {
+		user_id: userid,
+		name: playlistname
+	}
+	connection.query('INSERT INTO playlists SET ?', dat, function (err, result) {
+		if (err) throw err;
+		cb(result.insertId);
 	})
-}
-
-// Get all comments
-exports.all = function (cb) {
-	db.fetch({}, cb)
-}
-
-// Get all comments by a particular user
-exports.allByUser = function (user, cb) {
-	db.fetch({
-		user: user
-	}, cb)
 }
