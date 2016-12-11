@@ -127,7 +127,7 @@ $(document).ready(function () {
 		})
 	})
 
-	$('.playlisttitle').on('click', function () {
+	$('.playlisthead+li').on('click', function () {
 		console.log($(this).text(), $(this).attr('id'));
 	});
 
