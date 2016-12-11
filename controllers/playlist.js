@@ -16,7 +16,7 @@ module.exports = function (app, passport) {
 	app.post('/playlist/:name', function (req, res) {
 		if (req.params.name) {
 			console.log("ADDING PLAYLIST: ", req.params.name);
-			User.createPlaylist(req.user.id, req.params.name, function(id) {
+			User.createPlaylist(req.user.id, decodeURI(req.params.name), function(id) {
 				console.log("success!", id);
 			});
 		}
@@ -24,6 +24,8 @@ module.exports = function (app, passport) {
 
 	//get all playlists of user
 	app.get('/playlists', function(req,res) {
-		User.retrievePlaylists(req.user.id,)
+		User.retrievePlaylists(req.user.id,function(data) {
+			res.send(data);
+		})
 	});
 }

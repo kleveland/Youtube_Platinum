@@ -87,11 +87,18 @@ var tag = document.createElement('script');
 	}
 
 	function populatePlaylists() {
-		$.get('/playlist')
+		$('.playlisttitle').remove();
+		$.get('/playlists',function(data) {
+			console.log(data);
+			$.each(data,function(index,val) {
+				$('#playlisthead').append('<li class="playlisttitle"><a href="#">' + val.name + '</a></li>')
+			});
+		});
 	}
 
 	$(document).ready(function () {
 
+		populatePlaylists();
 
 		$('#playpause').click(function () {
 			if (player.getPlayerState() == 2) {
@@ -104,8 +111,15 @@ var tag = document.createElement('script');
 
 		$('#addplaylist').click(function() {
 			$(".modal-title").text("Add Playlist");
-			$(".modal-body").html("<br>ADD PLAYLIST</br>");
-
+			$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
+			$('#modal-button').text("Add Playlist");
+			$('#modal-button').click(function() {
+				$.post('/playlist/' + encodeURI($('#playlist-input').val()),function(id) {
+					console.log("SUCCESS CREATED");
+				})
+				$('#modalcont').modal('hide');
+				populatePlaylists();
+			})
 		})
 
 
@@ -116,7 +130,7 @@ var tag = document.createElement('script');
 			$.post("/search", {
 				dat: input
 			}, function (data) {
-				console.log(data.items[0].id.videoId);
+				//console.log(data.items[0].id.videoId);
 				$('.searchq').empty();
 				$.each(data.items, function (index, val) {
 						$('.searchq').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb"src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');

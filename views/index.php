@@ -21,28 +21,28 @@
 
 	<!-- Modal -->
 	<!-- Button trigger modal -->
-</button>
+	</button>
 
-<!-- Modal -->
-<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<!-- Modal -->
+	<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
-        <h4 class="modal-title">Modal title</h4>
-      </div>
-      <div class="modal-body">
+					<h4 class="modal-title">Modal title</h4>
+				</div>
+				<div class="modal-body">
 
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
-    </div>
-  </div>
-</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+					<button id="modal-button" type="button" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 	<!-- Sidebar -->
@@ -89,11 +89,12 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="searchq">
+					<div class="col-md-12">
+						<div class="searchq">
+						</div>
 					</div>
 				</div>
 				<div class="row">
-                    <div class="col-md-10">
 					<div class="col-md-10">
 						<div class="currentvideo">
 							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
@@ -104,50 +105,49 @@
 
 						</div>
 					</div>
-				</div>
-				<div class="row">
-					<div class="col-md-12">
-						<div class="footerfiller">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="footerfiller">
+							</div>
 						</div>
-                        </div>
-                    </div>
-                <div class="row">
-                    <!-- FOOTER -->
-                    <div class="footer">
-                        <div class="footer-bar text-center">
-                            <div class="progress-bar-new">
-                                <div class="videotime">
-                                    <input type="range" id="progress-bar" value="0">
-                                </div>
-                            </div>
-                            <div class="controls">
-                                <button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
-                                <button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
-                                <button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- END OF FOOTER -->
-                </div>
-                </div>
-            <!-- END OF APP CONTAINER -->
-		</div>
-        <!-- END OF PAGE CONTENT WRAPPER -->
-    <div>
-    <!-- END OF WRAPPER -->
+					</div>
+					<div class="row">
+						<!-- FOOTER -->
+						<div class="footer">
+							<div class="footer-bar text-center">
+								<div class="progress-bar-new">
+									<div class="videotime">
+										<input type="range" id="progress-bar" value="0">
+									</div>
+								</div>
+								<div class="controls">
+									<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
+									<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
+									<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
+								</div>
+							</div>
+						</div>
+						<!-- END OF FOOTER -->
+					</div>
+				</div>
+				<!-- END OF APP CONTAINER -->
+			</div>
+			<!-- END OF PAGE CONTENT WRAPPER -->
+			<div>
+				<!-- END OF WRAPPER -->
 
-    <!-- jQuery -->
-    <script src="assets/js/jquery.js"></script>
-    <!-- Bootstrap Core JavaScript -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/main.js"></script>
-    <!-- Menu Toggle Script -->
-    <script>
-        $("#menu-toggle ").click(function(e) {
-            e.preventDefault();
-            $("#wrapper ").toggleClass("toggled ");
-        });
-    </script>
+				<!-- jQuery -->
+				<script src="assets/js/jquery.js"></script>
+				<!-- Bootstrap Core JavaScript -->
+				<script src="assets/js/bootstrap.min.js"></script>
+				<script src="assets/js/main.js"></script>
+				<!-- Menu Toggle Script -->
+				<script>
+					$("#menu-toggle ").click(function(e) {
+						e.preventDefault();
+						$("#wrapper ").toggleClass("toggled ");
+					});
+				</script>
 
 </body>
 
