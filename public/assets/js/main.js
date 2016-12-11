@@ -92,6 +92,14 @@ var tag = document.createElement('script');
 		});
 	}
 
+	function updateUser() {
+		$('.sidebar-brand').remove();
+		$.get('/userinfo',function(data) {
+			console.log(data);
+			$('.sidebar-brand').append('<li class="sidebar-brand">' + data.first + " " + data.last + '<img class="profile-picture" src="'+data.prof_img+'" alt="profile image"></li>');
+		});
+	}
+
 	$(document).ready(function () {
 
 		populatePlaylists();
@@ -119,26 +127,31 @@ var tag = document.createElement('script');
 		});
 
 		$('#changeName').click(function() {
+			var newData;
 			$(".modal-title").text("Change Display Name");
-			$.get('/user/',function(data) {
-				console.log(data);
+			$.get('/userinfo',function(data) {
 				$(".modal-body").html('' +
 					'<div class="input-group">' +
+				 		'<span class="input-group-addon" id="basic-addon1">' +
+				 			'First Name' +
+				 		'</span>' +
+				 		'<input type="text" id="user-first" class="form-control" value="'+data.first+'" aria-describedby="basic-addon1">' +
 						'<span class="input-group-addon" id="basic-addon1">' +
-							'First Name' +
+							'Last Name' +
 						'</span>' +
-						'<input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1">' +
-					'</div>'
-				);
+						'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
+				 	'</div>'
+				 );
 			});
-
 			$('#modal-button').text("Update");
 			$('#modal-button').click(function() {
-				$.update('/user/' + encodeURI($('#playlist-input').val()),function(id) {
-					console.log("SUCCESS CREATED");
-				})
+				$.post(
+					'/userinfo/update',
+					{first: $('#user-first').val(), last: $('#user-last').val()} ,
+					function() {}
+				);
 				$('#modalcont').modal('hide');
-				populatePlaylists();
+				updateUser();
 			})
 		});
 

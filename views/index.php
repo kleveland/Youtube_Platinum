@@ -59,7 +59,7 @@
 					<div class="headernav">Settings</div>
 				</li>
 				<li>
-					<a href="#">Change Display Name</a>
+					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
 				</li>
 				<li>
 					<a href="#">Other</a>
