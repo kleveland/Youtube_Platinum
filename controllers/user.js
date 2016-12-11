@@ -13,6 +13,10 @@ module.exports = function (app, passport) {
 		}
 	});
 
+	app.get('/userinfo'), function(req,res) {
+		res.send(req.user);
+	}
+
 	app.get('/logout', function (req, res) {
 		req.logout();
 		req.session.error = "You have logged out.";

@@ -18,6 +18,7 @@
 </head>
 
 <body>
+
 	<!-- Modal -->
 	<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -39,6 +40,7 @@
 		</div>
 	</div>
 
+
 	<!-- Sidebar -->
 	<div id="wrapper">
 		<div id="sidebar-wrapper">
@@ -57,7 +59,7 @@
 					<div class="headernav">Settings</div>
 				</li>
 				<li>
-					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
+					<a href="#">Change Display Name</a>
 				</li>
 				<li>
 					<a href="#">Other</a>
@@ -98,7 +100,14 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-10">
+					<div class="col-md-2">
+						<div class="playq">
+							<div class="texthead">Manage Playlist</div>
+							<div id="playlistcontrols">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
 						<div class="currentvideo">
 							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
 						</div>
