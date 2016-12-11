@@ -1240,3 +1240,11 @@ div #slider {
 	width: auto;
 	margin: 5px 5px 5px 5px;
 }
+
+#progressBar {
+	width: 960px;
+	height: 6px;
+	background-color: #444444;
+	display: none;
+	margin-top: 1px;
+}gi
