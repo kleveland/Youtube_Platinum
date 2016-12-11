@@ -79,9 +79,9 @@
 			<div class="footer">
 				<div class="footer-bar text-center">
 					<div class="controls">
-						<button type="button" class="btn btn-danger btn-circle btn-lg"><i class="	glyphicon glyphicon-backward"></i></button>
-						<button type="button" class="btn btn-danger btn-circle btn-xl"><i class="	glyphicon glyphicon-play"></i></button>
-						<button type="button" class="btn btn-danger btn-circle btn-lg"><i class="	glyphicon glyphicon-forward"></i></button>
+						<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-backward"></i></button>
+						<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
+						<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-forward"></i></button>
 					</div>
 				</div>
 			</div>
