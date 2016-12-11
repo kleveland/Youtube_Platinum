@@ -808,7 +808,6 @@ p.more+a {
 
 .footer .footer-bar {
 	z-index: 99;
-	position: fixed;
 	bottom: 0;
 	background-color: #4d5d6c;
 	display: block;
@@ -1218,6 +1217,7 @@ div #slider {
   line-height: 1.428571429;
   border-radius: 15px;
 }
+
 .btn-circle.btn-lg {
   width: 50px;
   height: 50px;
@@ -1226,6 +1226,7 @@ div #slider {
   line-height: 1.33;
   border-radius: 25px;
 }
+
 .btn-circle.btn-xl {
   width: 70px;
   height: 70px;
@@ -1235,16 +1236,29 @@ div #slider {
   border-radius: 35px;
 }
 
+.btn-left,
+.btn-left:hover {
+	padding: 0px 6px 0px 0px!important;
+}
+
+.btn-right,
+.btn-right:hover {
+	padding: 0px 0px 0px 6px!important;
+}
+
 .thumb {
 	height: 90px;
 	width: auto;
 	margin: 5px 5px 5px 5px;
 }
 
-#progressBar {
-	width: 960px;
-	height: 6px;
-	background-color: #444444;
-	display: none;
-	margin-top: 1px;
-}gi
+.progress-bar-new {
+	left: 0;
+	position: absolute;
+	top: -10px;
+	width: 100%;
+}
+
+div.row {
+	margin: 0;
+}
