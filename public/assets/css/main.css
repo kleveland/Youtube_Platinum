@@ -9,6 +9,28 @@ body {
 	color: #fff;
 }
 
+////////////////////////////////////////////////////////////////////////////////////////
+
+body::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+	border-radius: 10px;
+	background-color: #444444;
+}
+
+body::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #345;
+}
+
+body::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #fb5;
+}
+////////////////////////////////////////////////////////////////////////////////
+
 p {
 	margin: 0 !important;
 }
@@ -1328,6 +1350,28 @@ li .headernav {
 div.row {
 	margin: 0;
 }
+
+////////////////////////////////////////////////////////////////////////////////////////
+div::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
+	border-radius: 10px;
+	background-color: #e55;
+}
+
+div::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: #345;
+}
+
+div::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-color: #fb5;
+}
+////////////////////////////////////////////////////////////////////////////////
+
 
 .brand-name {
 	display: inline-block;

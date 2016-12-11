@@ -95,7 +95,6 @@ function populatePlaylists() {
 }
 
 function updateUser() {
-	console.log("HERE")
 	$('.brand-name').remove();
 	$.get('/userinfo', function (data) {
 		$('.sidebar-brand').prepend('<div class="brand-name">'+data.first+" "+data.last+'</div>');
@@ -175,13 +174,11 @@ $(document).ready(function () {
 			var newData = data;
 			$('#modal-button').text("Update");
 			$('#modal-button').click(function () {
-				$.post('/userinfo/update',
-					{first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img},
-					function () {
-						console.log("HERE");
-						updateUser();
-					});
+				$.post('/userinfo/update', {first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img}, function () {
+					console.log("TEST");
+				});
 				$('#modalcont').modal('hide');
+				updateUser();
 			})
 		});
 	});
