@@ -115,30 +115,6 @@ ul.img-container img {
 	width: 150px;
 }
 
-.currentvideo {
-	padding: 20px 20px 20px 20px;
-	margin: 20px 0 0 0;
-	background-color: #4d5d6c;
-	margin-left: auto;
-	margin-right: auto;
-	text-align: center;
-}
-
-.playq {
-	width:100%;
-	height: 100px;
-	padding: 10px 5px 10x 5px;
-	margin-top: 20px;
-	background-color: #4d5d6c;
-	overflow-x: scroll;
-	overflow-y: hidden;
-	 white-space: nowrap;
-}
-
-.selectedvid {
-	border: 5px blue solid;
-}
-
 .navtext {
 	width: 100%;
 }
@@ -387,7 +363,6 @@ div.row {
 .headercont {
 	height: 50px;
 }
-
 
 .form-inline .form-group .form-small input {
 	width: 198px;
@@ -818,6 +793,13 @@ p.more+a {
 	height: 100px;
 }
 
+.footerfiller {
+	bottom: 0;
+	display: block;
+	width: 100%;
+	height: 100px;
+}
+
 .footer p {
 	margin-bottom: 20px!important;
 }
@@ -1210,29 +1192,31 @@ div #slider {
 }
 
 .btn-circle {
-  width: 30px;
-  height: 30px;
-  text-align: center;
-  padding: 6px 0;
-  font-size: 12px;
-  line-height: 1.428571429;
-  border-radius: 15px;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 15px;
 }
+
 .btn-circle.btn-lg {
-  width: 50px;
-  height: 50px;
-  padding: 10px 16px;
-  font-size: 18px;
-  line-height: 1.33;
-  border-radius: 25px;
+	width: 50px;
+	height: 50px;
+	padding: 10px 16px;
+	font-size: 18px;
+	line-height: 1.33;
+	border-radius: 25px;
 }
+
 .btn-circle.btn-xl {
-  width: 70px;
-  height: 70px;
-  padding: 10px 16px;
-  font-size: 24px;
-  line-height: 1.33;
-  border-radius: 35px;
+	width: 70px;
+	height: 70px;
+	padding: 10px 16px;
+	font-size: 24px;
+	line-height: 1.33;
+	border-radius: 35px;
 }
 
 .thumb {
@@ -1247,4 +1231,49 @@ div #slider {
 	background-color: #444444;
 	display: none;
 	margin-top: 1px;
-}gi
+}
+
+.video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+}
+
+.currentvideo {
+	padding: 20px 20px 0 20px;
+	margin: 20px 0 0 0;
+	background-color: #4d5d6c;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+.searchq {
+	width: 100%;
+	height: 100px;
+	padding: 10px 5px 10x 5px;
+	margin-top: 20px;
+	background-color: #4d5d6c;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.playq {
+	width: 100%;
+	height: 500px;
+	padding: 10px 5px 10x 5px;
+	margin-top: 20px;
+	background-color: #4d5d6c;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.selectedvid {
+	border: 5px blue solid;
+}
