@@ -62,6 +62,10 @@
 						$('.playq').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb"src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
 						$('#' + val.id.videoId).click(function () {
 							player.loadVideoById(val.id.videoId, 0, "large");
+							$('.selectedvid').each(function() {
+								$(this).removeClass('selectedvid');
+							})
+							$('#' + val.id.videoId + ' img').addClass("selectedvid");
 						})
 					})
 					//player.loadVideoById(data.items[0].id.videoId, 5, "large");

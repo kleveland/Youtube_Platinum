@@ -135,6 +135,10 @@ ul.img-container img {
 	 white-space: nowrap;
 }
 
+.selectedvid {
+	border: 5px blue solid;
+}
+
 .navtext {
 	width: 100%;
 }

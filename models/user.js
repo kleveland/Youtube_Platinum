@@ -30,20 +30,16 @@ exports.findOrCreate = function (prof, callback) {
 	});
 }
 
-exports.addSong = function (userid, playlistname, video, cb) {
+exports.addSong = function (playlist, video, cb) {
 	var dat = {
-		video_id: video
+		video_id: video,
+		playlist_id: playlist
 		// thumbnail: video.thumb
 	}
-	connection.query("SELECT id FROM playlists WHERE name='" + playlistname + "'", function (err, rows, fields) {
-		console.log("HERE");
-		console.log(rows[0].id);
-		dat.playlist_id = rows[0].id;
 		connection.query('INSERT INTO videos SET ?', dat, function (err, result) {
 			if (err) throw err;
-			cb();
+			cb(result.insertId);
 		});
-	});
 }
 
 exports.createPlaylist = function (userid, playlistname, cb) {
@@ -58,14 +54,14 @@ exports.createPlaylist = function (userid, playlistname, cb) {
 }
 
 exports.retrieveSongs = function (playlistid,cb) {
-	connection.query('SELECT id FROM videos WHERE playlist_id=', playlistid, function (err, rows, fields) {
+	connection.query('SELECT * FROM videos WHERE playlist_id="' + playlistid + '"', function (err, rows, fields) {
 		if (err) throw err;
 		cb(rows);
 	});
 }
 
 exports.retrievePlaylists = function (userid,cb) {
-	connection.query('SELECT id FROM playlists WHERE user_id=', userid, function (err, rows, fields) {
+	connection.query('SELECT * FROM playlists WHERE user_id="' + userid + '"', function (err, rows, fields) {
 		if (err) throw err;
 		cb(rows);
 	});

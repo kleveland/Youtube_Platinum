@@ -50,7 +50,7 @@
                                     <i class="fa fa-bars fa-3x"></i>
                                 </button>
 							<div class="headertext">
-								<h2>YouTube Platinum</h2>
+								<h2><b>YouTube</b> Platinum</h2>
 							</div>
 						</div>
 					</div>
@@ -65,7 +65,6 @@
 				</div>
 				<div class="row">
 					<div class="playq">
-						<a class="search-thumb" href=""><img class ="thumb" src="http://img.youtube.com/vi/fzQ6gRAEoy0/mqdefault.jpg"/></a>
 					</div>
 				</div>
 
