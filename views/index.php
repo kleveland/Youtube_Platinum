@@ -46,7 +46,7 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<?php print $_GET['name'] ?>
+					<div class="brand-name"><?php print $_GET['name'] ?></div>
 					<img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
 				</li>
 				<li id="playlisthead">
@@ -59,7 +59,7 @@
 					<div class="headernav">Settings</div>
 				</li>
 				<li>
-					<a href="#">Change Display Name</a>
+					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
 				</li>
 				<li>
 					<a href="#">Other</a>
