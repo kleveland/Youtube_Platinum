@@ -18,11 +18,6 @@
 </head>
 
 <body>
-
-	<!-- Modal -->
-	<!-- Button trigger modal -->
-	</button>
-
 	<!-- Modal -->
 	<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -44,7 +39,6 @@
 		</div>
 	</div>
 
-
 	<!-- Sidebar -->
 	<div id="wrapper">
 		<div id="sidebar-wrapper">
@@ -63,7 +57,7 @@
 					<div class="headernav">Settings</div>
 				</li>
 				<li>
-					<a href="#">Change Display Name</a>
+					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
 				</li>
 				<li>
 					<a href="#">Other</a>

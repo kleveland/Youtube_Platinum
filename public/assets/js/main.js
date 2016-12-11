@@ -60,12 +60,7 @@ var tag = document.createElement('script');
 
         // Skip video to new time.
         player.seekTo(newTime);
-
     });
-
-
-
-
 
     function togglePlay() {
 		if (player.getPlayerState() == 2) {
@@ -107,7 +102,7 @@ var tag = document.createElement('script');
 				player.pauseVideo();
 			}
 			togglePlay();
-		})
+		});
 
 		$('#addplaylist').click(function() {
 			$(".modal-title").text("Add Playlist");
@@ -120,7 +115,32 @@ var tag = document.createElement('script');
 				$('#modalcont').modal('hide');
 				populatePlaylists();
 			})
-		})
+		});
+
+		$('#changeName').click(function() {
+			$(".modal-title").text("Change Display Name");
+			$.get('/user/',function(data) {
+				console.log(data);
+				$(".modal-body").html('' +
+					'<div class="input-group">' +
+						'<span class="input-group-addon" id="basic-addon1">' +
+							'First Name' +
+						'</span>' +
+						'<input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1">' +
+					'</div>'
+				);
+			});
+
+			$('#modal-button').text("Update");
+			$('#modal-button').click(function() {
+				$.update('/user/' + encodeURI($('#playlist-input').val()),function(id) {
+					console.log("SUCCESS CREATED");
+				})
+				$('#modalcont').modal('hide');
+				populatePlaylists();
+			})
+		});
+
 
 
 		$("#submitbut").click(function () {
@@ -138,14 +158,11 @@ var tag = document.createElement('script');
 							player.loadVideoById(val.id.videoId, 0, "large");
 							$('.selectedvid').each(function() {
 								$(this).removeClass('selectedvid');
-							})
+							});
 							$('#' + val.id.videoId + ' img').addClass("selectedvid");
 						})
-					})
+					});
 					//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 			});
-
 		})
-
-
-	})
+	});
