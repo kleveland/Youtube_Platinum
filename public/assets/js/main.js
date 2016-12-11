@@ -57,7 +57,6 @@ function updateProgressBar() {
 
 $('#progress-bar').on('mouseup touchend', function (e) {
 
-<<<<<<< HEAD
 	// Calculate the new time for the video.
 	// new time in seconds = total duration in seconds * ( value of range input / 100 )
 	var newTime = player.getDuration() * (e.target.value / 100);
