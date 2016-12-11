@@ -5,10 +5,6 @@ header#topNav button.btn-mobile {
     color: #fff !important;
     background-color: #7bafd4 !important;
 }
-header#topNav .btn,
-.btn:hover {
-    padding: 10px 16px !important;
-}
 header#topNav .btn {
     vertical-align: middle !important;
 }

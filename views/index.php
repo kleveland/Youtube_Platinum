@@ -8,7 +8,6 @@
 	<meta name="Author" content="" />
 	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-	<link href="assets/css/mobile.css" rel="stylesheet" type="text/css" />
 	<!-- FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 	<!-- CORE CSS -->
@@ -20,7 +19,30 @@
 
 <body>
 
+	<!-- Modal -->
+	<!-- Button trigger modal -->
+</button>
 
+<!-- Modal -->
+<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 	<!-- Sidebar -->
@@ -31,8 +53,11 @@
 					<?php print $_GET['name'] ?>
 					<img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
 				</li>
-				<li>
-					<a href="#">My Playlists</a>
+				<li id="playlisthead">
+					<div class="headernav">My Playlists</div>
+				</li>
+				<li id="addnewplaylist">
+					<a href="#" data-toggle="modal" data-target="#modalcont"> + Add Playlist</a>
 				</li>
 				<li>
 					<a href="#">Settings</a>
