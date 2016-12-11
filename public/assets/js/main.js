@@ -94,6 +94,13 @@ function populatePlaylists() {
 	});
 }
 
+function updateUser() {
+	$('.brand-name').remove();
+	$.get('/userinfo', function (data) {
+		$('.sidebar-brand').append('<div class="brand-name">'+data.first+" "+data.last+'</div>');
+	});
+}
+
 $(document).ready(function () {
 
 	populatePlaylists();
@@ -151,25 +158,29 @@ $(document).ready(function () {
 
 	$('#changeName').click(function () {
 		$(".modal-title").text("Change Display Name");
-		$.get('/user/', function (data) {
-			console.log(data);
+		$.get('/userinfo', function (data) {
 			$(".modal-body").html('' +
 				'<div class="input-group">' +
-				'<span class="input-group-addon" id="basic-addon1">' +
-				'First Name' +
-				'</span>' +
-				'<input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1">' +
+					'<span class="input-group-addon" id="basic-addon1">' +
+						'First Name' +
+					'</span>' +
+					'<input type="text" id="user-first" class="form-control" value="'+data.first+'" aria-describedby="basic-addon1">' +
+					'<span class="input-group-addon" id="basic-addon1">' +
+						'Last Name' +
+					'</span>' +
+					'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
 				'</div>'
 			);
 		});
 
 		$('#modal-button').text("Update");
 		$('#modal-button').click(function () {
-			$.update('/user/' + encodeURI($('#playlist-input').val()), function (id) {
-				console.log("SUCCESS CREATED");
+			$.post('/userinfo/update',
+				{first: $('#user-first').val(), last: $('#user-last').val()},
+				function () {
 			})
 			$('#modalcont').modal('hide');
-			populatePlaylists();
+			updateUser();
 		})
 	});
 });

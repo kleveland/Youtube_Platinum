@@ -46,7 +46,7 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<?php print $_GET['name'] ?>
+					<div class="brand-name"><?php print $_GET['name'] ?></div>
 					<img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
 				</li>
 				<li id="playlisthead">
