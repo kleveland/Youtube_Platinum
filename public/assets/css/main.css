@@ -4,12 +4,7 @@
 }
 
 body {
-	font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif !important;
-	-webkit-text-size-adjust: 100%;
-	-moz-text-size-adjust: 100%;
-	-o-text-size-adjust: 100%;
-	-ms-text-size-adjust: 100%;
-	-webkit-font-smoothing: antialiased !important;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif !important;
 	background-color: #2b3e4f;
 	color: #fff;
 }
@@ -1276,4 +1271,9 @@ div #slider {
 
 .selectedvid {
 	border: 5px blue solid;
+}
+
+li .headernav {
+	background-color: #d9534f;
+	font-weight: bold;
 }
