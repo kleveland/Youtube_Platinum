@@ -171,16 +171,15 @@ $(document).ready(function () {
 					'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
 				'</div>'
 			);
-		});
-
-		$('#modal-button').text("Update");
-		$('#modal-button').click(function () {
-			$.post('/userinfo/update',
-				{first: $('#user-first').val(), last: $('#user-last').val()},
-				function () {
+			var newData = data;
+			$('#modal-button').text("Update");
+			$('#modal-button').click(function () {
+				$.post('/userinfo/update',
+					{first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img},
+					function () {});
+				$('#modalcont').modal('hide');
+				updateUser();
 			})
-			$('#modalcont').modal('hide');
-			updateUser();
-		})
+		});
 	});
 });
