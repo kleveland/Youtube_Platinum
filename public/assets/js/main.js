@@ -1,4 +1,5 @@
 var time_update_interval = 0;
+var selectedplaylist;
 
 var tag = document.createElement('script');
 	tag.id = 'iframe-demo';
@@ -91,7 +92,7 @@ var tag = document.createElement('script');
 		$.get('/playlists',function(data) {
 			console.log(data);
 			$.each(data,function(index,val) {
-				$('#playlisthead').append('<li class="playlisttitle"><a href="#">' + val.name + '</a></li>')
+				$('#playlisthead').append('<li id=' + val.id + 'class="playlisttitle"><a href="#">' + val.name + '</a></li>')
 			});
 		});
 	}
@@ -122,6 +123,10 @@ var tag = document.createElement('script');
 			})
 		})
 
+		$('.playlisttitle').on('click',function() {
+			//$(this).getAttr
+		})
+
 
 		$("#submitbut").click(function () {
 			console.log("INPUT:", $("#searchinput").val());
@@ -133,7 +138,7 @@ var tag = document.createElement('script');
 				//console.log(data.items[0].id.videoId);
 				$('#searchvids').empty();
 				$.each(data.items, function (index, val) {
-						$('#searchvids').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb"src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
+						$('#searchvids').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb" src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
 						$('#' + val.id.videoId).click(function () {
 							player.loadVideoById(val.id.videoId, 0, "large");
 							$('.selectedvid').each(function() {

@@ -20,10 +20,6 @@
 <body>
 
 	<!-- Modal -->
-	<!-- Button trigger modal -->
-	</button>
-
-	<!-- Modal -->
 	<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -104,9 +100,16 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="col-md-10">
+					<div class="col-md-2">
+						<div class="playq">
+							<div class="texthead">Manage Playlist</div>
+							<div id="playlistcontrols">
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8">
 						<div class="currentvideo">
-							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							<iframe id="vidplayer" class="video" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="col-md-2">
