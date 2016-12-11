@@ -1328,3 +1328,7 @@ li .headernav {
 div.row {
 	margin: 0;
 }
+
+.brand-name {
+	display: inline-block;
+}
