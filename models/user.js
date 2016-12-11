@@ -42,6 +42,13 @@ exports.addSong = function (playlist, video, cb) {
 		});
 }
 
+exports.updateUser = function(userid, user, cb) {
+	connection.query('UPDATE users SET first = ?, last = ?,prof_img = ? WHERE id=' + userid, [user.first,user.last,user.prof_img],function(err, result){
+		if(err) throw err;
+		callback(result.insertId);
+	})
+}
+
 exports.createPlaylist = function (userid, playlistname, cb) {
 	var dat = {
 		user_id: userid,
