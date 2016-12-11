@@ -109,7 +109,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="currentvideo">
-							<iframe id="vidplayer" class="video" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="col-md-2">
