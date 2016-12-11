@@ -114,9 +114,6 @@ header#topNav ul li.hidetext {
     .emailmobile{
         padding-top: 10px;
     }
-    div.row {
-        margin-top: -30px!important;
-    }
 }
 @media only screen and (min-width: 767px) and (max-width: 1280px) {
     ul.img-container {

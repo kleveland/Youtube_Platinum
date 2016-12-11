@@ -1,15 +1,20 @@
 (function () {
 
 	var express = require('express');
+	var bodyParser = require('body-parser');
 	var app = express();
+	app.use(bodyParser.urlencoded({
+		extended: false
+	}));
+
+	// parse application/json
+	app.use(bodyParser.json());
 	var path = require('path');
 	var passport = require('passport');
 	var phpExpress = require('php-express')({
-
 		// assumes php is in your PATH
 		binPath: 'php'
 	});
-
 	app.set('views', path.join(__dirname, 'views'));
 	app.engine('php', phpExpress.engine);
 	app.set('view engine', 'php');
@@ -27,24 +32,9 @@
 	require('./middlewares/auth')(passport);
 	require('./controllers')(app, passport);
 
-	//DATA RETRIVEAL
-	/*app.get("/api/playlists", function (req, res) {
-
-	});
-
-	app.get("/api/videos", function (req, res) {
-
-	});
-
-	app.get("/api/videos", function (req, res) {
-
-	});*/
-
 
 	app.listen(3000, function () {
 		console.log("LISTENING ON PORT 3000.");
 	});
-
-	//app.use(app.router);
 
 }).call(this);
