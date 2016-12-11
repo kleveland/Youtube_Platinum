@@ -118,6 +118,7 @@ $(document).ready(function () {
 		$(".modal-title").text("Add Playlist");
 		$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
 		$('#modal-button').text("Add Playlist");
+		$('#modal-button').off();
 		$('#modal-button').click(function () {
 			$.post('/playlist/' + encodeURI($('#playlist-input').val()), function (id) {
 				console.log("SUCCESS CREATED");
@@ -173,6 +174,7 @@ $(document).ready(function () {
 			);
 			var newData = data;
 			$('#modal-button').text("Update");
+			$('#modal-button').off();
 			$('#modal-button').click(function () {
 				$.post('/userinfo/update', {
 					first: $('#user-first').val(),
