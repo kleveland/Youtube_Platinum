@@ -19,9 +19,7 @@
 		console.log("READY!!");
 	}
 
-	function vidStateChange() {
-		console.log("STATE WAS CHANGED");
-		console.log("TIME: ", player.getCurrentTime());
+	function togglePlay() {
 		if (player.getPlayerState() == 2) {
 			var element = $('.glyphicon-pause');
 			element.removeClass("glyphicon-pause");
@@ -33,20 +31,21 @@
 		}
 	}
 
+	function vidStateChange() {
+		console.log("STATE WAS CHANGED");
+		console.log("TIME: ", player.getCurrentTime());
+		togglePlay();
+	}
+
 	$(document).ready(function () {
 
 		$('#playpause').click(function () {
 			if (player.getPlayerState() == 2) {
 				player.playVideo();
-				var element = $('.glyphicon-pause');
-				element.removeClass("glyphicon-pause");
-				element.addClass("glyphicon-play");
 			} else if (player.getPlayerState() == 1) {
 				player.pauseVideo();
-				var element = $('.glyphicon-play');
-				element.removeClass("glyphicon-play");
-				element.addClass("glyphicon-pause");
 			}
+			togglePlay();
 		})
 
 
@@ -58,7 +57,14 @@
 				dat: input
 			}, function (data) {
 				console.log(data.items[0].id.videoId);
-				player.loadVideoById(data.items[0].id.videoId, 5, "large");
+				$('.playq').empty();
+				$.each(data.items, function (index, val) {
+						$('.playq').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb"src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
+						$('#' + val.id.videoId).click(function () {
+							player.loadVideoById(val.id.videoId, 0, "large");
+						})
+					})
+					//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 			});
 
 		})

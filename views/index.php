@@ -65,7 +65,7 @@
 				</div>
 				<div class="row">
 					<div class="playq">
-
+						<a class="search-thumb" href=""><img class ="thumb" src="http://img.youtube.com/vi/fzQ6gRAEoy0/mqdefault.jpg"/></a>
 					</div>
 				</div>
 

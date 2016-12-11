@@ -130,6 +130,9 @@ ul.img-container img {
 	padding: 10px 5px 10x 5px;
 	margin-top: 20px;
 	background-color: #4d5d6c;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	 white-space: nowrap;
 }
 
 .navtext {
@@ -1226,4 +1229,10 @@ div #slider {
   font-size: 24px;
   line-height: 1.33;
   border-radius: 35px;
+}
+
+.thumb {
+	height: 90px;
+	width: auto;
+	margin: 5px 5px 5px 5px;
 }

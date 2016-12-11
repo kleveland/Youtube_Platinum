@@ -4,7 +4,7 @@ module.exports = function (app, passport) {
 	app.post('/search',function(req,res) {
 		req.body.dat;
 		request({
-            uri: 'https://www.googleapis.com/youtube/v3/search?part=snippet &q=' + encodeURI(req.body.dat) + '&type=video&videoCaption=closedCaption&key=' + apikey,
+            uri: 'https://www.googleapis.com/youtube/v3/search?part=snippet &q=' + encodeURI(req.body.dat) + '&type=video&videoCaption=closedCaption&maxResults=20&key=' + apikey,
             method: "GET"
         }, function (error, response, body) {
             var dat = JSON.parse(body);
