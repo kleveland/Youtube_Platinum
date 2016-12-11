@@ -158,6 +158,7 @@ $(document).ready(function () {
 
 	$('#changeName').click(function () {
 		$(".modal-title").text("Change Display Name");
+		var newData;
 		$.get('/userinfo', function (data) {
 			$(".modal-body").html('' +
 				'<div class="input-group">' +
@@ -171,14 +172,13 @@ $(document).ready(function () {
 					'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
 				'</div>'
 			);
+			var newData = data;
 		});
-
 		$('#modal-button').text("Update");
 		$('#modal-button').click(function () {
 			$.post('/userinfo/update',
-				{first: $('#user-first').val(), last: $('#user-last').val()},
-				function () {
-			})
+				{first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img},
+				function () {});
 			$('#modalcont').modal('hide');
 			updateUser();
 		})
