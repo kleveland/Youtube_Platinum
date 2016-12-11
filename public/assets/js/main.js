@@ -97,7 +97,7 @@ function populatePlaylists() {
 function updateUser() {
 	$('.brand-name').remove();
 	$.get('/userinfo', function (data) {
-		$('.sidebar-brand').prepend('<div class="brand-name">'+data.first+" "+data.last+'</div>');
+		$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
 	});
 }
 
@@ -161,24 +161,29 @@ $(document).ready(function () {
 		$.get('/userinfo', function (data) {
 			$(".modal-body").html('' +
 				'<div class="input-group">' +
-					'<span class="input-group-addon" id="basic-addon1">' +
-						'First Name' +
-					'</span>' +
-					'<input type="text" id="user-first" class="form-control" value="'+data.first+'" aria-describedby="basic-addon1">' +
-					'<span class="input-group-addon" id="basic-addon1">' +
-						'Last Name' +
-					'</span>' +
-					'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
+				'<span class="input-group-addon" id="basic-addon1">' +
+				'First Name' +
+				'</span>' +
+				'<input type="text" id="user-first" class="form-control" value="' + data.first + '" aria-describedby="basic-addon1">' +
+				'<span class="input-group-addon" id="basic-addon1">' +
+				'Last Name' +
+				'</span>' +
+				'<input type="text" id="user-last" class="form-control" value="' + data.last + '" aria-describedby="basic-addon1">' +
 				'</div>'
 			);
 			var newData = data;
 			$('#modal-button').text("Update");
 			$('#modal-button').click(function () {
-				$.post('/userinfo/update', {first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img}, function () {
-					console.log("TEST");
+				$.post('/userinfo/update', {
+					first: $('#user-first').val(),
+					last: $('#user-last').val(),
+					prof_img: newData.prof_img
+				}, function (data) {
+					$('#modalcont').modal('hide');
+					$('.brand-name').remove();
+					console.log("DATA!!!", data);
+					$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
 				});
-				$('#modalcont').modal('hide');
-				updateUser();
 			})
 		});
 	});
