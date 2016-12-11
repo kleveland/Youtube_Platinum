@@ -60,7 +60,13 @@
 					<a href="#" id="addplaylist" data-toggle="modal" data-target="#modalcont"> + Add Playlist</a>
 				</li>
 				<li>
-					<a href="#">Settings</a>
+					<div class="headernav">Settings</div>
+				</li>
+				<li>
+					<a href="#">Change Display Name</a>
+				</li>
+				<li>
+					<a href="#">Other</a>
 				</li>
 			</ul>
 		</div>
@@ -91,6 +97,9 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="searchq">
+							<div class="texthead">Search Results</div>
+							<div id="searchvids">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -101,8 +110,11 @@
 						</div>
 					</div>
 					<div class="col-md-2">
-						<div class="playq">
 
+						<div class="playq">
+							<div class="texthead">Play Queue</div>
+							<div id="queuevids">
+							</div>
 						</div>
 					</div>
 					<div class="row">
