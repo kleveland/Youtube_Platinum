@@ -21,12 +21,10 @@
 
 	<!-- Modal -->
 	<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
-  Launch demo modal
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="modalcont" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -59,7 +57,7 @@
 					<div class="headernav">My Playlists</div>
 				</li>
 				<li id="addnewplaylist">
-					<a href="#"> + Add Playlist</a>
+					<a href="#" data-toggle="modal" data-target="#modalcont"> + Add Playlist</a>
 				</li>
 				<li>
 					<a href="#">Settings</a>
