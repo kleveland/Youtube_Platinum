@@ -92,13 +92,8 @@
 					<div class="searchq">
 					</div>
 				</div>
-				<div class="progressbar">
-					<div class="videotime">
-						<input type="range" id="progress-bar" value="0">
-					</div>
-				</div>
-
 				<div class="row">
+                    <div class="col-md-10">
 					<div class="col-md-10">
 						<div class="currentvideo">
 							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
@@ -114,38 +109,45 @@
 					<div class="col-md-12">
 						<div class="footerfiller">
 						</div>
-					</div>
-				</div>
-
-			</div>
-			<div class="footer">
-
-				<div class="footer-bar text-center">
-					<div class="controls">
-						<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-backward"></i></button>
-						<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
-						<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-forward"></i></button>
-					</div>
-				</div>
-			</div>
-
-
+                        </div>
+                    </div>
+                <div class="row">
+                    <!-- FOOTER -->
+                    <div class="footer">
+                        <div class="footer-bar text-center">
+                            <div class="progress-bar-new">
+                                <div class="videotime">
+                                    <input type="range" id="progress-bar" value="0">
+                                </div>
+                            </div>
+                            <div class="controls">
+                                <button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
+                                <button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
+                                <button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OF FOOTER -->
+                </div>
+                </div>
+            <!-- END OF APP CONTAINER -->
 		</div>
-		<div>
+        <!-- END OF PAGE CONTENT WRAPPER -->
+    <div>
+    <!-- END OF WRAPPER -->
 
-			<!-- jQuery -->
-			<script src="assets/js/jquery.js"></script>
-			<!-- Bootstrap Core JavaScript -->
-			<script src="assets/js/bootstrap.min.js"></script>
-			<script src="assets/js/main.js"></script>
-			<!-- Menu Toggle Script -->
-			<script>
-				$("#menu-toggle ").click(function(e) {
-					e.preventDefault();
-					$("#wrapper ").toggleClass("toggled ");
-				});
-			</script>
-
+    <!-- jQuery -->
+    <script src="assets/js/jquery.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/main.js"></script>
+    <!-- Menu Toggle Script -->
+    <script>
+        $("#menu-toggle ").click(function(e) {
+            e.preventDefault();
+            $("#wrapper ").toggleClass("toggled ");
+        });
+    </script>
 
 </body>
 
