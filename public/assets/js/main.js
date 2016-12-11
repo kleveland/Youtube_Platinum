@@ -17,6 +17,11 @@ var tag = document.createElement('script');
 		console.log("APIREADY");
 	}
 
+       var time_update_interval = setInterval(function () {
+            //updateTimerDisplay();
+            updateProgressBar();
+        }, 500);
+
 	function vidReady() {
 		console.log("READY!!");
         // Update the controls on load
@@ -28,15 +33,10 @@ var tag = document.createElement('script');
 
         // Start interval to update elapsed time display and
         // the elapsed part of the progress bar every second.
-        time_update_interval = setInterval(function () {
-            updateTimerDisplay();
-            updateProgressBar();
-        }, 1000);
 
 
         $('#volume-input').val(Math.round(player.getVolume()));
     }
-
 
     // This function is called by initialize()
     function updateTimerDisplay(){
@@ -82,6 +82,7 @@ var tag = document.createElement('script');
 	function vidStateChange() {
 		console.log("STATE WAS CHANGED");
 		console.log("TIME: ", player.getCurrentTime());
+		updateProgressBar();
 		togglePlay();
 	}
 
