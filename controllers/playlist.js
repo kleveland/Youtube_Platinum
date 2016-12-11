@@ -24,6 +24,6 @@ module.exports = function (app, passport) {
 
 	//get all playlists of user
 	app.get('/playlists', function(req,res) {
-
+		User.retrievePlaylists(req.user.id,)
 	});
 }

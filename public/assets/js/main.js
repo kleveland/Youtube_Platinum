@@ -86,7 +86,12 @@ var tag = document.createElement('script');
 		togglePlay();
 	}
 
+	function populatePlaylists() {
+		$.get('/playlist')
+	}
+
 	$(document).ready(function () {
+
 
 		$('#playpause').click(function () {
 			if (player.getPlayerState() == 2) {
@@ -95,6 +100,12 @@ var tag = document.createElement('script');
 				player.pauseVideo();
 			}
 			togglePlay();
+		})
+
+		$('#addplaylist').click(function() {
+			$(".modal-title").text("Add Playlist");
+			$(".modal-body").html("<br>ADD PLAYLIST</br>");
+
 		})
 
 
