@@ -68,15 +68,21 @@
 						<a class="search-thumb" href=""><img class ="thumb" src="http://img.youtube.com/vi/fzQ6gRAEoy0/mqdefault.jpg"/></a>
 					</div>
 				</div>
-
+                <div class="progressbar">
+                    <div class="videotime">
+                        <input type="range" id="progress-bar" value="0">
+                    </div>
+                </div>
 
 				<div class="row">
 					<div class="currentvideo">
 						<iframe id="vidplayer" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
 					</div>
 				</div>
+
 			</div>
 			<div class="footer">
+
 				<div class="footer-bar text-center">
 					<div class="controls">
 						<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg"><i class="glyphicon glyphicon-backward"></i></button>
@@ -85,6 +91,8 @@
 					</div>
 				</div>
 			</div>
+
+
 		</div>
 		<div>
 
