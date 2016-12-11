@@ -808,11 +808,19 @@ p.more+a {
 
 .footer .footer-bar {
 	z-index: 99;
+	position: fixed;
 	bottom: 0;
 	background-color: #4d5d6c;
 	display: block;
 	text-transform: uppercase;
 	padding: 10px 10px 10px 10px;
+	width: 100%;
+	height: 100px;
+}
+
+.footerfiller {
+	bottom: 0;
+	display: block;
 	width: 100%;
 	height: 100px;
 }
@@ -1250,6 +1258,59 @@ div #slider {
 	height: 90px;
 	width: auto;
 	margin: 5px 5px 5px 5px;
+}
+
+#progressBar {
+	width: 960px;
+	height: 6px;
+	background-color: #444444;
+	display: none;
+	margin-top: 1px;
+}
+
+.video {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 400px;
+}
+
+.currentvideo {
+	padding: 20px 20px 0 20px;
+	margin: 20px 0 0 0;
+	background-color: #4d5d6c;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+	position: relative;
+	width: 100%;
+	height: 500px;
+}
+
+.searchq {
+	width: 100%;
+	height: 100px;
+	padding: 10px 5px 10x 5px;
+	margin-top: 20px;
+	background-color: #4d5d6c;
+	overflow-x: scroll;
+	overflow-y: hidden;
+	white-space: nowrap;
+}
+
+.playq {
+	width: 100%;
+	height: 500px;
+	padding: 10px 5px 10x 5px;
+	margin-top: 20px;
+	background-color: #4d5d6c;
+	overflow-x: hidden;
+	overflow-y: scroll;
+}
+
+.selectedvid {
+	border: 5px blue solid;
 }
 
 .progress-bar-new {

@@ -64,14 +64,28 @@
 					</div>
 				</div>
 				<div class="row">
-					<div class="playq">
+					<div class="searchq">
 					</div>
 				</div>
 				<div class="row">
-					<div class="currentvideo">
-						<iframe id="vidplayer" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+                    <div class="col-md-10">
+					<div class="col-md-10">
+						<div class="currentvideo">
+							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/hQdp7rN6vUs?enablejsapi=1" frameborder="0" allowfullscreen></iframe>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<div class="playq">
+
+						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="footerfiller">
+						</div>
+                        </div>
+                    </div>
                 <div class="row">
                     <!-- FOOTER -->
                     <div class="footer">
@@ -90,7 +104,7 @@
                     </div>
                     <!-- END OF FOOTER -->
                 </div>
-			</div>
+                </div>
             <!-- END OF APP CONTAINER -->
 		</div>
         <!-- END OF PAGE CONTENT WRAPPER -->
