@@ -21,8 +21,9 @@ module.exports = function (app, passport) {
 	});
 
 	app.post('/userinfo/update', function(req,res) {
-		User.updateUser(req.user.id,req.body,function() {
+		User.updateUser(req.user.id,req.body,function(id) {
 			console.log("SUCCESS UPDATE");
+			res.send(id);
 		});
 	})
 

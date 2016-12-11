@@ -174,9 +174,9 @@ $(document).ready(function () {
 			var newData = data;
 			$('#modal-button').text("Update");
 			$('#modal-button').click(function () {
-				$.post('/userinfo/update',
-					{first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img},
-					function () {});
+				$.post('/userinfo/update', {first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img}, function () {
+					console.log("TEST");
+				});
 				$('#modalcont').modal('hide');
 				updateUser();
 			})
