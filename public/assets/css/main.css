@@ -1463,26 +1463,6 @@ div::-webkit-scrollbar-thumb
     left: 5%;
 }
 
-h2 {
-
-  padding: 20px;
-    font-size: 200%;
-
-
-  color: #ecf0f1;
-  text-align: center;
-}
-
-h3 {
-    font-size: 175%;
-    color: black;
-}
-
-h4{
-    position: relative;
-    left: 5%;
-    text-align:left;
-}
 
 fieldset {
   border: none;

@@ -7,6 +7,7 @@ var slider;
 var dragging = false;
 var playlist;
 var playlistsongs;
+var alert = document.getElementById('success-alert');
 
 function resetQueue() {
 	playqueue = false;
@@ -209,7 +210,11 @@ $(document).ready(function () {
 		$('#modal-button').off();
 		$('#modal-button').click(function () {
 			$.post('/playlist/' + encodeURI($('#playlist-input').val()), function (id) {
-				//console.log("SUCCESS CREATED");
+				alert.style.visibility = "visible";
+				$('#success-alert').append('Playlist ' + $('#playlist-input').val() + 'Added.');
+				$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+					$("#success-alert").alert('close');
+				});
 			});
 			$('#modalcont').modal('hide');
 			populatePlaylists();
@@ -238,6 +243,11 @@ $(document).ready(function () {
 
 	$(document.body).on('click', '#addsong', function () {
 		$.post('/playlist/add/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
+			alert.style.visibility = "visible";
+			$('#success-alert').append('Video added to playlist.');
+			$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+				$("#success-alert").alert('close');
+			});
 			//console.log("ADDED SONG");
 			populateSongs();
 		})
@@ -246,7 +256,7 @@ $(document).ready(function () {
 	$(document.body).on('click', '#exportsong', function () {
 		queue = [];
 		stopQueue();
-		$.each(playlistsongs, function(index,val) {
+		$.each(playlistsongs, function (index, val) {
 			queue.push(val.video_id);
 		});
 		populateQueue();
@@ -257,6 +267,11 @@ $(document).ready(function () {
 			//console.log("REMOVED SONG");
 			$('.playlistsong .selectedvid').remove();
 			populateSongs();
+			alert.style.visibility = "visible";
+			$('#success-alert').append('Video removed from playlist.');
+			$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+				$("#success-alert").alert('close');
+			});
 		});
 	})
 
@@ -284,11 +299,16 @@ $(document).ready(function () {
 	//PLAY QUEUE CONTROLS
 	$('#addqueue').click(function () {
 		//console.log("ADDING TO QUEUE");
-		if(playqueue) {
+		if (playqueue) {
 			queue.push($('.selectedvid').parent().attr('id'));
 		} else {
 			queue.push(player.getVideoData()['video_id']);
 		}
+		alert.style.visibility = "visible";
+		$('#success-alert').append('Video added to queue.');
+		$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+			$("#success-alert").alert('close');
+		});
 		populateQueue();
 	})
 
@@ -302,6 +322,11 @@ $(document).ready(function () {
 			if (index != -1) {
 				queue.splice(index, 1);
 			}
+			alert.style.visibility = "visible";
+			$('#success-alert').append('Video removed from queue.');
+			$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+				$("#success-alert").alert('close');
+			});
 		}
 		populateQueue();
 	});
@@ -459,6 +484,11 @@ $(document).ready(function () {
 					$('.brand-name').remove();
 					//console.log("DATA!!!", data);
 					$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
+					alert.style.visibility = "visible";
+					$('#success-alert').append('Username changed.');
+					$("#success-alert").fadeTo(2000, 500).slideUp(1000, function () {
+						$("#success-alert").alert('close');
+					});
 				});
 			})
 		});
