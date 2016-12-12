@@ -1334,8 +1334,8 @@ div #slider {
 }
 
 #playlistcontrols,#queuevids {
-		overflow-x: hidden;
-	overflow-y: scroll;
+	overflow-x: hidden;
+	overflow-y: auto;
 }
 
 .playq {

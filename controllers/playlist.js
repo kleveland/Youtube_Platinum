@@ -6,7 +6,7 @@ module.exports = function (app, passport) {
 			console.log("ADDING VIDEO TO PLAYLIST" + req.params.playlistid + ":", req.params.songid);
 			// input video thumbnail from youtube's api or page source parsing
 			// var video = { id: req.params.songid, thumb: req.params.imgurl };
-			User.addSong(req.user.id, req.params.playlistid, req.params.songid, function(id) {
+			User.addSong(req.params.playlistid, req.params.songid, function(id) {
 				console.log("success!", id);
 			});
 		}

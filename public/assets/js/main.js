@@ -130,9 +130,14 @@ $(document).ready(function () {
 
 
 	$(document.body).on('click', '.playlisttitle', function () {
+		var playlist = this;
 		$('#playlistcontrols').empty();
-		$('#playlistcontrols').html('<div>' + $(this).text() + '</div');
-
+		$('#playlistcontrols').html('<div class="selectedplaylist">' + $(this).text() + '</div><button id="addsong" type="button" class="btn btn-primary">Add Song</button><button id="removesong" type="button" class="btn btn-primary">Remove Song</button>');
+		$("#addsong").click(function() {
+			$.post('/playlist/'+$(playlist).attr('id')+'/'+player.getVideoData()['video_id'],function(data) {
+				console.log("ADDED SONG");
+			})
+		});
 		console.log($(this).text(), $(this).attr('id'));
 	});
 
