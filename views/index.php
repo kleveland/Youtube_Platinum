@@ -118,14 +118,16 @@
 
 						<div class="playq">
 							<div class="texthead">Play Queue</div>
-							<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
-							<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
-							<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
-							<div class="songbutcont">
-								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Add</button>
-								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Remove</button>
-							</div>
 							<div id="queuevids">
+								<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
+								<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
+								<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
+								<div class="songbutcont">
+									<button id="addqueue" type="button" class="songbut50 btn btn-primary">Add</button>
+									<button id="removequeue" type="button" class="songbut50 btn btn-primary">Remove</button>
+								</div>
+								<div id="queuevideos">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -141,53 +143,53 @@
 							<div class="footer-bar text-center">
 								<div class="progress-bar-new">
 									<div class="videotime">
-                                        <input type="range" id="progress-bar" value="0">
+										<input type="range" id="progress-bar" value="0">
 									</div>
 								</div>
-                                <div class="controls-container">
-                                    <div class="row">
-                                        <div class="thumbnail">
-                                            <div id="videothumb">
+								<div class="controls-container">
+									<div class="row">
+										<div class="thumbnail">
+											<div id="videothumb">
 
-                                            </div>
-                                        </div>
-								<div class="controls">
-									<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
-									<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
-									<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
+											</div>
+										</div>
+										<div class="controls">
+											<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
+											<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
+											<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
+										</div>
+
+										<div class="time">
+											<ul>
+												<li>
+													<p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p </li>
+											</ul>
+
+										</div>
+									</div>
 								</div>
-
-                                <div class="time" >
-                                    <ul>
-                                        <li>
-                                            <p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p
-                                        </li>
-                                    </ul>
-
-                                </div>
+								<!-- END OF FOOTER -->
 							</div>
 						</div>
-						<!-- END OF FOOTER -->
+						<!-- END OF APP CONTAINER -->
 					</div>
-				</div>
-				<!-- END OF APP CONTAINER -->
-			</div>
-			<!-- END OF PAGE CONTENT WRAPPER -->
-			<div>
-				<!-- END OF WRAPPER -->
+					<!-- END OF PAGE CONTENT WRAPPER -->
+					<div>
+						<!-- END OF WRAPPER -->
 
-				<!-- jQuery -->
-				<script src="assets/js/jquery.js"></script>
-				<!-- Bootstrap Core JavaScript -->
-				<script src="assets/js/bootstrap.min.js"></script>
-				<script src="assets/js/main.js"></script>
-				<!-- Menu Toggle Script -->
-				<script>
-					$("#menu-toggle ").click(function(e) {
-						e.preventDefault();
-						$("#wrapper ").toggleClass("toggled ");
-					});
-				</script>
+						<!-- jQuery -->
+						<script src="assets/js/jquery.js"></script>
+						<!-- Bootstrap Core JavaScript -->
+						<script src="assets/js/bootstrap.min.js"></script>
+						<script src="assets/js/main.js"></script>
+						<!-- Menu Toggle Script -->
+						<script>
+							$("#menu-toggle ").click(function(e) {
+								e.preventDefault();
+								$("#wrapper ").toggleClass("toggled ");
+							});
+
+						</script>
 
 </body>
 
