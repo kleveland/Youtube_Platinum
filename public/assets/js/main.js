@@ -106,16 +106,12 @@ function togglePlay() {
 function vidStateChange(event) {
 	console.log("STATE WAS CHANGED");
 	console.log("TIME: ", player.getCurrentTime());
-	if (event.data === 0 && playqueue) {
-		console.log("QUEUE", queue);
-		queue.splice(0, 1);
-		populateQueue();
-		if (queue.length == 0) {
-			resetQueue();
-		} else {
-			player.loadVideoById(queue[0], 0, "large");
+	/*if (event.data === 0 && playqueue) {
+		if (++queueindex >= queue.length) {
+			queueindex = queue.length - 1;
 		}
-	}
+		player.loadVideoById(queue[queueindex], 0, "large");
+	}*/
 
 	updateProgressBar();
 	updateTimerDisplay();
@@ -179,6 +175,30 @@ $(document).ready(function () {
 		}
 		togglePlay();
 	});
+
+	$('#backward').click(function () {
+		if (playqueue) {
+			if (--queueindex < 0) {
+				queueindex = 0;
+			}
+			console.log("QUEUEINDEX", queueindex);
+			player.loadVideoById(queue[queueindex], 0, "large");
+		} else {
+			player.seekTo(0);
+		}
+	})
+
+	$('#forward').click(function () {
+		if (playqueue) {
+			if (++queueindex >= queue.length) {
+				queueindex = queue.length - 1;
+			}
+			player.loadVideoById(queue[queueindex], 0, "large");
+		} else {
+
+			player.seekTo(player.getDuration());
+		}
+	})
 
 	$('#addplaylist').click(function () {
 		$(".modal-title").text("Add Playlist");
@@ -266,14 +286,32 @@ $(document).ready(function () {
 		populateQueue();
 	});
 
+	var paused;
 	$('#playqueue').click(function () {
-		if (queue.length != 0) {
-			playqueue = true;
-			$('#playqueue').removeClass('btn-primary');
-			$('#playqueue').addClass('btn-success');
-			$('#playqueue').text("Stop Queue");
-			player.loadVideoById(queue[0], 0, "large");
+		if (playqueue) {
+			if (paused) {
+				paused = false;
+				player.playVideo();
+			} else {
+				paused = true;
+				player.pauseVideo();
+			}
+		} else {
+			if (queue.length != 0) {
+				playqueue = true;
+				$('#playqueue').toggleClass('btn-primary');
+				$('#playqueue').toggleClass('btn-success');
+				$('#playqueue').text("Play/Pause Queue");
+				player.loadVideoById(queue[queueindex], 0, "large");
+			}
 		}
+	})
+
+	$('#queuestop').click(function () {
+		playqueue = false;
+		$('#playqueue').removeClass('btn-success');
+		$('#playqueue').text('Play Queue');
+		player.stopVideo();
 	})
 
 	$('#exportqueue').click(function () {
@@ -292,7 +330,7 @@ $(document).ready(function () {
 			});
 			$('#modalcont').modal('hide');
 		})
-	})
+	});
 
 
 
