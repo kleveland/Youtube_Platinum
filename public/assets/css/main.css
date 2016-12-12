@@ -1518,6 +1518,10 @@ a:hover {
 	float:right;
 }
 
+#progress-bar{
+	width: 100%;
+}
+
 #progress-bar .slider-selection {
 	background: #BABABA;
 }

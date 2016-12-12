@@ -144,7 +144,7 @@
 							<div class="footer-bar text-center">
 								<div class="progress-bar-new">
 									<div class="videotime">
-                                        <input id="progress-bar" data-slider-id='progress-bar' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" />
+                                        <input id="progress-bar" data-slider-id='progress-bar' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1"  data-slider-tooltip="hide" />
 								</div>
 								</div>
 								<div class="controls-container">
@@ -186,7 +186,6 @@
 				<script src="assets/js/main.js"></script>
 				<!-- Menu Toggle Script -->
 				<script>
-
 					$("#menu-toggle ").click(function(e) {
 						e.preventDefault();
 						$("#wrapper ").toggleClass("toggled ");
