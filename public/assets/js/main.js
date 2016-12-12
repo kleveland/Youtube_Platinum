@@ -3,7 +3,7 @@ var selectedplaylist;
 var queue = [];
 var playqueue = false;
 var queueindex = 0;
-
+var slider;
 function resetQueue() {
 	playqueue = false;
 	$('#playqueue').addClass('btn-primary');
@@ -75,24 +75,17 @@ function populateQueue() {
 // This function is called by initialize()
 function updateProgressBar() {
 	// Update the value of our progress bar accordingly.
-	var value = (player.getCurrentTime() / player.getDuration()) * 100;
-        $('#progress-bar').slider({
-            formatter: function(value) {
-                return 'Current value: ' + value;
-            }
-        });
+	if (slider) {
+		var value = (player.getCurrentTime() / player.getDuration()) * 100;
+		/*$('#progress-bar').slider({
+		    formatter: function(value) {
+		        return 'Current value: ' + value;
+		    }
+		});*/
 
+		slider.slider('setValue', value);
+	}
 }
-
-$('#progress-bar').on('mouseup touchend', function (e) {
-
-	// Calculate the new time for the video.
-	// new time in seconds = total duration in seconds * ( value of range input / 100 )
-	var newTime = player.getDuration() * (e.target.value / 100);
-
-	// Skip video to new time.
-	player.seekTo(newTime);
-});
 
 function togglePlay() {
 	if (player.getPlayerState() == 2) {
@@ -119,6 +112,7 @@ function vidStateChange(event) {
 			player.loadVideoById(queue[0], 0, "large");
 		}
 	}
+
 	updateProgressBar();
 	updateTimerDisplay();
 	updateThumbnail();
@@ -144,6 +138,21 @@ function updateUser() {
 }
 
 $(document).ready(function () {
+	slider = $('#progress-bar').slider({
+		min: 0,
+		max: 100
+	});
+
+
+	$('#progress-bar').on('slideStop', function (e) {
+		console.log("VALUEOFSLIDER", e);
+		// Calculate the new time for the video.
+		// new time in seconds = total duration in seconds * ( value of range input / 100 )
+		var newTime = player.getDuration() * (e.value / 100);
+
+		// Skip video to new time.
+		player.seekTo(newTime);
+	});
 
 	$.get('/userinfo', function (data) {
 		$('.brand-name').html(data.first + " " + data.last);
@@ -351,28 +360,28 @@ function formatTime(time) {
 }
 
 
-$('input[type="submit"]').mousedown(function(){
-  $(this).css('background', '#2ecc71');
+$('input[type="submit"]').mousedown(function () {
+	$(this).css('background', '#2ecc71');
 });
-$('input[type="submit"]').mouseup(function(){
-  $(this).css('background', '#1abc9c');
-});
-
-$('#loginform').click(function(){
-  $('.login').fadeToggle('slow');
-  $(this).toggleClass('green');
+$('input[type="submit"]').mouseup(function () {
+	$(this).css('background', '#1abc9c');
 });
 
+$('#loginform').click(function () {
+	$('.login').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
 
 
-$(document).mouseup(function (e)
-{
-    var container = $(".login");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.hide();
-        $('#loginform').removeClass('green');
-    }
+$(document).mouseup(function (e) {
+	var container = $(".login");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#loginform').removeClass('green');
+	}
 });
