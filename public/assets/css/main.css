@@ -1322,6 +1322,11 @@ div #slider {
 	background-color: #4d5d6c;
 	white-space: nowrap;
 }
+.errorsearch {
+	font-size: 19px;
+	margin-left: 20px;
+	margin-bottom: 15px;
+}
 
 #searchvids {
 	overflow-x: scroll;

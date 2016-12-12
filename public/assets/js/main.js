@@ -128,10 +128,13 @@ $(document).ready(function () {
 		})
 	})
 
-	$('.playlisthead+li').on('click', function () {
+
+	$(document.body).on('click', '.playlisttitle', function () {
+		$('#playlistcontrols').empty();
+		$('#playlistcontrols').html('<div>' + $(this).text() + '</div');
+
 		console.log($(this).text(), $(this).attr('id'));
 	});
-
 
 	$("#submitbut").click(function () {
 		console.log("INPUT:", $("#searchinput").val());
@@ -141,7 +144,10 @@ $(document).ready(function () {
 		}, function (data) {
 			//console.log(data.items[0].id.videoId);
 			$('#searchvids').empty();
-			$.each(data.items, function (index, val) {
+			if (data.items.length == 0) {
+				$('#searchvids').append("<div class='errorsearch'>There were no search results for " + $("#searchinput").val() + "!</div>");
+			} else {
+				$.each(data.items, function (index, val) {
 					$('#searchvids').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb" src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
 					$('#' + val.id.videoId).click(function () {
 						player.loadVideoById(val.id.videoId, 0, "large");
@@ -151,13 +157,14 @@ $(document).ready(function () {
 						$('#' + val.id.videoId + ' img').addClass("selectedvid");
 					})
 				})
+			}
 			$('.searchq').slideDown();
-				//player.loadVideoById(data.items[0].id.videoId, 5, "large");
+			//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 		});
 
 	});
 
-	$("#closesearch").click(function() {
+	$("#closesearch").click(function () {
 		$('.searchq').slideUp();
 	});
 
