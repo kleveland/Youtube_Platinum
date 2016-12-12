@@ -4,6 +4,7 @@ var queue = [];
 var playqueue = false;
 var queueindex = 0;
 var slider;
+
 function resetQueue() {
 	playqueue = false;
 	$('#playqueue').addClass('btn-primary');
@@ -267,7 +268,21 @@ $(document).ready(function () {
 		}
 	})
 
-	$('#export')
+	$('#exportqueue').click(function () {
+			$('#modalcont').modal('show');
+		$(".modal-title").text("Export Queue");
+		$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
+		$('#modal-button').text("Add Playlist");
+		$('#modal-button').off();
+		$('#modal-button').click(function () {
+			console.log("ATTEMPTING TO ADD QUEUE PLAYLIST");
+			$.post('/playlist/copy/' + encodeURI($('#playlist-input').val()), { arr: JSON.stringify(queue) }, function (id) {
+				console.log("SUCCESS CREATED");
+			populatePlaylists();
+			});
+			$('#modalcont').modal('hide');
+		})
+	})
 
 
 
