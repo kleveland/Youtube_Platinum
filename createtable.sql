@@ -26,7 +26,7 @@ ALTER IGNORE TABLE Users
 ADD UNIQUE INDEX idx_users (username);
 
 ALTER IGNORE TABLE Videos
-ADD UNIQUE INDEX idx_videos (url);
+ADD UNIQUE INDEX idx_videos (video_id,playlist_id);
 
 ALTER IGNORE TABLE Playlists
 ADD UNIQUE INDEX idx_playlists (name,user_id);

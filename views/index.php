@@ -46,8 +46,11 @@
 		<div id="sidebar-wrapper">
 			<ul class="sidebar-nav">
 				<li class="sidebar-brand">
-					<div class="brand-name"><?php print $_GET['name'] ?></div>
-					<img class="profile-picture" src="<?php print $_GET['image'] ?>" alt="profile image">
+					<div class="brand-name"></div>
+					<img class="profile-picture" alt="profile image">
+				</li>
+				<li class="sidebar-logout">
+					<a href="/logout">Logout</a>
 				</li>
 				<li id="playlisthead">
 					<div class="headernav">My Playlists</div>
@@ -60,9 +63,6 @@
 				</li>
 				<li>
 					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
-				</li>
-				<li>
-					<a href="#">Other</a>
 				</li>
 			</ul>
 		</div>
@@ -93,7 +93,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="searchq">
-							<div class="texthead">Search Results</div>
+							<div class="texthead">Search Results<i id="closesearch" class="float-right glyphicon glyphicon-remove"></i></div>
 							<div id="searchvids">
 							</div>
 						</div>
@@ -101,9 +101,11 @@
 				</div>
 				<div class="row">
 					<div class="col-md-2">
-						<div class="playq">
+						<div class="playlistq">
 							<div class="texthead">Manage Playlist</div>
 							<div id="playlistcontrols">
+								<div id="songs">
+								</div>
 							</div>
 						</div>
 					</div>
@@ -116,6 +118,13 @@
 
 						<div class="playq">
 							<div class="texthead">Play Queue</div>
+							<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
+							<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
+							<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
+							<div class="songbutcont">
+								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Add</button>
+								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Remove</button>
+							</div>
 							<div id="queuevids">
 							</div>
 						</div>
@@ -132,14 +141,30 @@
 							<div class="footer-bar text-center">
 								<div class="progress-bar-new">
 									<div class="videotime">
-										<input type="range" id="progress-bar" value="0">
+                                        <input type="range" id="progress-bar" value="0">
 									</div>
 								</div>
+                                <div class="controls-container">
+                                    <div class="row">
+                                        <div class="thumbnail">
+                                            <div id="videothumb">
+
+                                            </div>
+                                        </div>
 								<div class="controls">
 									<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
 									<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
 									<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
 								</div>
+
+                                <div class="time" >
+                                    <ul>
+                                        <li>
+                                            <p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p
+                                        </li>
+                                    </ul>
+
+                                </div>
 							</div>
 						</div>
 						<!-- END OF FOOTER -->
