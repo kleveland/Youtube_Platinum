@@ -71,6 +71,7 @@ function updateThumbnail() {
 function populateQueue() {
 	$('#queuevideos').empty();
 	$.each(queue, function (index, val) {
+	    console.log(val);
 		$('#queuevideos').append('<a class="playlistsong" id="' + val + '" href="#"><img class="playlist-thumb" src="http://img.youtube.com/vi/' + val + '/mqdefault.jpg"/></a>');
 	})
 }
@@ -253,6 +254,7 @@ $(document).ready(function () {
 	//PLAY QUEUE CONTROLS
 	$('#addqueue').click(function () {
 		console.log("ADDING TO QUEUE");
+        console.log($('.selectedvid').parent().attr('id'));
 		queue.push($('.selectedvid').parent().attr('id'));
 		populateQueue();
 	})
