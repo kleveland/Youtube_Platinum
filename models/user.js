@@ -43,9 +43,10 @@ exports.addSong = function (playlist, video, cb) {
 }
 
 exports.updateUser = function(userid, user, cb) {
-	connection.query('UPDATE users SET first = ?, last = ?,prof_img = ? WHERE id=' + userid, [user.first,user.last,user.prof_img],function(err, result){
+	connection.query('UPDATE users SET first = ?, last = ?, prof_img = ? WHERE id=' + userid, [user.first,user.last,user.prof_img],function(err, result){
 		if(err) throw err;
-		cb(result.insertId);
+		user.id = result.insertId;
+		cb(user);
 	});
 }
 

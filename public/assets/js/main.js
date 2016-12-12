@@ -118,6 +118,7 @@ $(document).ready(function () {
 		$(".modal-title").text("Add Playlist");
 		$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
 		$('#modal-button').text("Add Playlist");
+		$('#modal-button').off();
 		$('#modal-button').click(function () {
 			$.post('/playlist/' + encodeURI($('#playlist-input').val()), function (id) {
 				console.log("SUCCESS CREATED");
@@ -127,21 +128,26 @@ $(document).ready(function () {
 		})
 	})
 
-	$('.playlisthead+li').on('click', function () {
+
+	$(document.body).on('click', '.playlisttitle', function () {
+		$('#playlistcontrols').empty();
+		$('#playlistcontrols').html('<div>' + $(this).text() + '</div');
+
 		console.log($(this).text(), $(this).attr('id'));
 	});
-
 
 	$("#submitbut").click(function () {
 		console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();
-
 		$.post("/search", {
 			dat: input
 		}, function (data) {
 			//console.log(data.items[0].id.videoId);
 			$('#searchvids').empty();
-			$.each(data.items, function (index, val) {
+			if (data.items.length == 0) {
+				$('#searchvids').append("<div class='errorsearch'>There were no search results for " + $("#searchinput").val() + "!</div>");
+			} else {
+				$.each(data.items, function (index, val) {
 					$('#searchvids').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb" src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
 					$('#' + val.id.videoId).click(function () {
 						player.loadVideoById(val.id.videoId, 0, "large");
@@ -151,9 +157,15 @@ $(document).ready(function () {
 						$('#' + val.id.videoId + ' img').addClass("selectedvid");
 					})
 				})
-				//player.loadVideoById(data.items[0].id.videoId, 5, "large");
+			}
+			$('.searchq').slideDown();
+			//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 		});
 
+	});
+
+	$("#closesearch").click(function () {
+		$('.searchq').slideUp();
 	});
 
 	$('#changeName').click(function () {
@@ -173,10 +185,17 @@ $(document).ready(function () {
 			);
 			var newData = data;
 			$('#modal-button').text("Update");
+			$('#modal-button').off();
 			$('#modal-button').click(function () {
-				$.post('/userinfo/update', {first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img}, function () {
-                    $('#modalcont').modal('hide');
-                    updateUser();
+				$.post('/userinfo/update', {
+					first: $('#user-first').val(),
+					last: $('#user-last').val(),
+					prof_img: newData.prof_img
+				}, function (data) {
+					$('#modalcont').modal('hide');
+					$('.brand-name').remove();
+					console.log("DATA!!!", data);
+					$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
 				});
 			})
 		});
