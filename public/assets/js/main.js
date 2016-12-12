@@ -175,10 +175,9 @@ $(document).ready(function () {
 			$('#modal-button').text("Update");
 			$('#modal-button').click(function () {
 				$.post('/userinfo/update', {first: $('#user-first').val(), last: $('#user-last').val(), prof_img: newData.prof_img}, function () {
-					console.log("TEST");
+                    $('#modalcont').modal('hide');
+                    updateUser();
 				});
-				$('#modalcont').modal('hide');
-				updateUser();
 			})
 		});
 	});
