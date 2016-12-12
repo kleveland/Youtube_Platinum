@@ -24,6 +24,15 @@ module.exports = function (app, passport) {
 		}
 	});
 
+	app.post('/playlist/delete/:playlistid', function(req, res) {
+		if(req.params.playlistid) {
+			User.deletePlaylist(req.params.playlistid,function(id) {
+				console.log("Playlist removed");
+				res.sendStatus(200);
+			})
+		}
+	})
+
 	//create playlist with "name" using: /playlist/{name}
 	app.post('/playlist/:name', function (req, res) {
 		if (req.params.name) {

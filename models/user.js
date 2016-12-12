@@ -68,6 +68,16 @@ exports.createPlaylist = function (userid, playlistname, cb) {
 	})
 }
 
+exports.deletePlaylist = function (playlist, cb) {
+	connection.query('DELETE FROM videos WHERE playlist_id=' + playlist, function(err, result) {
+		console.log("Songs removed from playlist: " + playlist);
+	})
+	connection.query('DELETE FROM playlists WHERE id=' + playlist, function(err, result) {
+		console.log("Playlist removed: " + playlist);
+		cb();
+	})
+}
+
 exports.retrieveSongs = function (playlistid,cb) {
 	connection.query('SELECT * FROM videos WHERE playlist_id="' + playlistid + '"', function (err, rows, fields) {
 		if (err) throw err;

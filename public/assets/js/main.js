@@ -149,7 +149,7 @@ $(document).ready(function () {
 	$(document.body).on('click', '.playlisttitle', function () {
 		playlist = this;
 		$('.playlistcont').remove();
-		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button></div>');
+		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button><button id="deleteplaylist" type="button" class="songbut btn btn-danger">Delete Playlist</button></div>');
 		populateSongs();
 		console.log($(this).text(), $(this).attr('id'));
 	});
@@ -166,6 +166,15 @@ $(document).ready(function () {
 			console.log("REMOVED SONG");
 			$('.playlistsong .selectedvid').remove();
 			populateSongs();
+		});
+	})
+
+	$(document.body).on('click', '#deleteplaylist', function () {
+		$.post('/playlist/delete/' + $(playlist).attr('id'), function (data) {
+			console.log("REMOVED SONG");
+			$('.playlistcont').remove();
+			$('#songs').empty();
+			populatePlaylists();
 		});
 	})
 
