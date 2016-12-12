@@ -136,7 +136,6 @@ $(document).ready(function () {
 	$("#submitbut").click(function () {
 		console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();
-
 		$.post("/search", {
 			dat: input
 		}, function (data) {
@@ -152,9 +151,14 @@ $(document).ready(function () {
 						$('#' + val.id.videoId + ' img').addClass("selectedvid");
 					})
 				})
+			$('.searchq').slideDown();
 				//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 		});
 
+	});
+
+	$("#closesearch").click(function() {
+		$('.searchq').slideUp();
 	});
 
 	$('#changeName').click(function () {

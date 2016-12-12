@@ -93,7 +93,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="searchq">
-							<div class="texthead">Search Results</div>
+							<div class="texthead">Search Results<i id="closesearch" class="float-right glyphicon glyphicon-remove"></i></div>
 							<div id="searchvids">
 							</div>
 						</div>
@@ -101,7 +101,7 @@
 				</div>
 				<div class="row">
 					<div class="col-md-2">
-						<div class="playq">
+						<div class="playlistq">
 							<div class="texthead">Manage Playlist</div>
 							<div id="playlistcontrols">
 							</div>
