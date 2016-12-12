@@ -15,13 +15,13 @@ module.exports = function (app, passport) {
 	);
 
 	app.get('/auth/google/failure', function (req, res) {
-		console.log("fail!");
+		//console.log("fail!");
 		req.session.error = "It seems you were unable to login!";
 		res.redirect("/login");
 	});
 	
 	app.get('/auth/google/success', function (req, res) {
-		console.log("success!");
+		//console.log("success!");
 		req.session.error = undefined;
 		res.redirect("/");
 	});

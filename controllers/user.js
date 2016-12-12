@@ -1,9 +1,9 @@
 module.exports = function (app, passport) {
 	var User = require('../models/user');
 	app.get('/login', function (req, res) {
-		console.log("LOGIN PAGE");
+		//console.log("LOGIN PAGE");
 		if (req.session.error) {
-			console.log("ERRORRR");
+			//console.log("ERRORRR");
 			res.render('login.php', {
 				get: {
 					error: req.session.error
@@ -21,8 +21,8 @@ module.exports = function (app, passport) {
 	app.post('/userinfo/update', function (req, res) {
 		console.log("BODY: ", req.body);
 		User.updateUser(req.user.id, req.body, function (dat) {
-			console.log("SUCCESS UPDATE");
-			console.log("NEWUSER", dat);
+			//console.log("SUCCESS UPDATE");
+			//console.log("NEWUSER", dat);
 			dat.id = req.user.id;
 			req.login(dat, function (err) {
 

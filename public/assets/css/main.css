@@ -1558,13 +1558,16 @@ a:hover:after {
 }
 
 #progress-bar .slider-selection {
-	background: #BABABA;
+	background: #000000;
 }
 
 #submitbut {
 	cursor: pointer;
 }
 
+.slider-handle.round{
+	background-image: linear-gradient(to bottom, #d9534f 0%, #d9534f 100%);
+}
 #success-alert {
 	visibility: hidden;
 	z-index: 999;

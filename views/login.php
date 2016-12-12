@@ -31,19 +31,19 @@
 					<h3>This is how you use YoutubePlatium:</h3>
 					<h4>Login using your Gmail</b>
 					</h4>
-					<h4><b id="pictures">Search up you want to watch in the search bar on the top right</b></h4>
+					<h4><b id="pictures">Search up videos via the search bar on the top right</b></h4>
 					<div class="pic">
 						<img src="/assets/images/Search.png" id="site">
 					</div>
-					<h4><b id="hamburger">Open up Hamburger Menu on the left to select playlists and manage your account</b></h4>
+					<h4><b id="hamburger">Use the menu on the top left to select playlists and manage your account</b></h4>
 					<div class="ham">
 						<img src="/assets/images/Hamburger.png" id="site">
 					</div>
-					<h4><b id="leftist">Manage your existing playlists to the left of the video</b></h4>
+					<h4><b id="leftist">Manage your existing playlists to the left of the video display</b></h4>
 					<div class="left">
 						<img src="/assets/images/Left.png" id="site">
 					</div>
-					<h4><b id="rightist">Create, add and play your playlists to the right of the video</b></h4>
+					<h4><b id="rightist">Create, add, and play your playlists on the right of the video display</b></h4>
 					<div class="right">
 						<img src="/assets/images/Right.png" id="site">
 					</div>

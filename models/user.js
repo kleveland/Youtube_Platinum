@@ -7,10 +7,10 @@ var connection = mysql.createConnection({
 });
 
 exports.findOrCreate = function (prof, callback) {
-	console.log("PROFID: ", prof.id);
+	//console.log("PROFID: ", prof.id);
 	connection.query('SELECT * FROM users WHERE google_id=' + prof.id, function (err, rows, fields) {
 		if (err) throw err;
-		console.log("ROWS: ", JSON.stringify(rows));
+		//console.log("ROWS: ", JSON.stringify(rows));
 		if (rows[0]) {
 			callback(err, rows[0]);
 		} else {
@@ -74,10 +74,10 @@ exports.createPlaylist = function (userid, playlistname, cb) {
 
 exports.deletePlaylist = function (playlist, cb) {
 	connection.query('DELETE FROM videos WHERE playlist_id=' + playlist, function (err, result) {
-		console.log("Songs removed from playlist: " + playlist);
+		//console.log("Songs removed from playlist: " + playlist);
 	})
 	connection.query('DELETE FROM playlists WHERE id=' + playlist, function (err, result) {
-		console.log("Playlist removed: " + playlist);
+		//console.log("Playlist removed: " + playlist);
 		cb();
 	})
 }
@@ -105,14 +105,14 @@ exports.addQueue = function (userid, name, songs, cb) {
 	connection.query('INSERT INTO playlists SET ?', dat, function (err, result) {
 		if (err) throw err;
 		for (var i = 0; i < songs.length; i++) {
-			console.log(songs[i]);
+			//console.log(songs[i]);
 			if (i == songs.length - 1) {
 				str += '("' + songs[i] + '",' + result.insertId + ')';
 			} else {
 				str += '("' + songs[i] + '",' + result.insertId + '), ';
 			}
 		}
-		console.log("STRING", str);
+		//console.log("STRING", str);
 		connection.query('INSERT INTO videos (video_id,playlist_id) VALUES ' + str, function (err, result) {
 			cb();
 		})
