@@ -68,11 +68,12 @@
 				<div class="alertlogin">
 					<?php
 					if(!empty($_GET['error'])) {
-						echo '<div class="alert alert-danger">' . $_GET['error'] .
+						echo '<div class="alert alert-danger" id="success-alert"><button type="button" class="close" data-dismiss="alert">x</button>' . $_GET['error'] .
 						'</div>';
 					}
 				?>
 				</div>
+
 				<a class="login-btn btn btn-danger btn-lg" href="/auth/google">Login With Google</a>
 
 				<button type="button" class="login-btn btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Tutorial</button>
@@ -89,6 +90,12 @@
 	<script type="text/javascript" src="assets/plugins/js/jquery-2.1.4.min.js"></script>
 	<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+	<script>
+		$("#success-alert").fadeTo(1500, 500).slideUp(1000, function(){
+			$("#success-alert").alert('close');
+		});
+	</script>
 </body>
 
 </html>

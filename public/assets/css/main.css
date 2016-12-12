@@ -1464,13 +1464,10 @@ div::-webkit-scrollbar-thumb
 }
 
 h2 {
-<<<<<<< HEAD
-  padding: 20px;
-    font-size: 200%;
-=======
->>>>>>> origin/master
-  color: #ecf0f1;
-  text-align: center;
+  	padding: 20px;
+	font-size: 200%;
+  	color: #ecf0f1;
+  	text-align: center;
 }
 
 h3 {
@@ -1521,7 +1518,6 @@ fieldset {
   	box-shadow: 0 0 1px 1px #1abc9c;
 }
 
-
 .randompad {
   	padding: 10px;
 }
@@ -1567,4 +1563,13 @@ a:hover:after {
 
 #submitbut {
 	cursor: pointer;
+}
+
+#success-alert {
+	visibility: hidden;
+	z-index: 999;
+	right: 0;
+	position: fixed;
+	width: 400px;
+	margin: 20px 20px;
 }
