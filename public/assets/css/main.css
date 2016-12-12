@@ -1437,8 +1437,11 @@ div::-webkit-scrollbar-thumb
 }
 
 h2 {
+<<<<<<< HEAD
   padding: 20px;
     font-size: 200%;
+=======
+>>>>>>> origin/master
   color: #ecf0f1;
   text-align: center;
 }
@@ -1513,10 +1516,6 @@ a:hover {
   color: #1abc9c;
 }
 
-<<<<<<< HEAD
-////////////////////////////////////////////////////////////////////////////////
-=======
-
 .brand-name {
 	float: left;
 	display: inline-block;
@@ -1529,7 +1528,14 @@ a:hover {
 	float:right;
 }
 
+#progress-bar{
+	width: 100%;
+}
+
 #progress-bar .slider-selection {
 	background: #BABABA;
 }
->>>>>>> origin/master
+
+#submitbut {
+	cursor: pointer;
+}
