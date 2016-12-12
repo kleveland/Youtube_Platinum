@@ -71,7 +71,6 @@ function updateThumbnail() {
 function populateQueue() {
 	$('#queuevideos').empty();
 	$.each(queue, function (index, val) {
-	    console.log(val);
 		$('#queuevideos').append('<a class="playlistsong" id="' + val + '" href="#"><img class="playlist-thumb" src="http://img.youtube.com/vi/' + val + '/mqdefault.jpg"/></a>');
 	})
 }
@@ -107,12 +106,12 @@ function togglePlay() {
 function vidStateChange(event) {
 	console.log("STATE WAS CHANGED");
 	console.log("TIME: ", player.getCurrentTime());
-	/*if (event.data === 0 && playqueue) {
+	if (event.data === 0 && playqueue) {
 		if (++queueindex >= queue.length) {
 			queueindex = queue.length - 1;
 		}
 		player.loadVideoById(queue[queueindex], 0, "large");
-	}*/
+	}
 
 	updateProgressBar();
 	updateTimerDisplay();
@@ -274,8 +273,11 @@ $(document).ready(function () {
 	//PLAY QUEUE CONTROLS
 	$('#addqueue').click(function () {
 		console.log("ADDING TO QUEUE");
-        console.log($('.selectedvid').parent().attr('id'));
-		queue.push($('.selectedvid').parent().attr('id'));
+		if(playqueue) {
+			queue.push($('.selectedvid').parent().attr('id'));
+		} else {
+			queue.push(player.getVideoData()['video_id']);
+		}
 		populateQueue();
 	})
 
@@ -324,7 +326,7 @@ $(document).ready(function () {
 	})
 
 	$('#upqueue').click(function () {
-		console.log("MOVING DOWN");
+		console.log("MOVING UP");
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
 			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
 			console.log("INDEX", index);
@@ -339,7 +341,7 @@ $(document).ready(function () {
 	})
 	$('#downqueue').click(function () {
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
-			console.log("MOVINGUP");
+			console.log("MOVING DOWN");
 			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
 			console.log("INDEX", index);
 			console.log("QUEUE", queue);
