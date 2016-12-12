@@ -187,6 +187,8 @@ $(document).ready(function () {
 	});
 
 	//END CONTROLS FOR PLAYLIST
+
+
 	function doSearch() {
 		console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();

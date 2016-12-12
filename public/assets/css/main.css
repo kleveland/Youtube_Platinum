@@ -1293,6 +1293,17 @@ div #slider {
 	margin-bottom: 7.5px;
 }
 
+.songbutcont {
+	text-align: center;
+}
+.songbut50 {
+	display: inline-block;
+	width: 49%;
+	border: none;
+	margin-top: 7.5px;
+	margin-bottom: 7.5px;
+}
+
 .playlist-thumb {
 	height: auto;
 	width: 90%;

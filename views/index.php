@@ -118,6 +118,13 @@
 
 						<div class="playq">
 							<div class="texthead">Play Queue</div>
+							<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
+							<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
+							<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
+							<div class="songbutcont">
+								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Add</button>
+								<button id="exportqueue" type="button" class="songbut50 btn btn-primary">Remove</button>
+							</div>
 							<div id="queuevids">
 							</div>
 						</div>
