@@ -45,7 +45,7 @@
                                     <div class="formholder">
                                         <div class="randompad">
                                             <fieldset>
-                                                <p>This is how you use YoutubePlatium</p>
+                                                <h3>This is how you use YoutubePlatium</h3>
                                             </fieldset>
                                         </div>
                                     </div>

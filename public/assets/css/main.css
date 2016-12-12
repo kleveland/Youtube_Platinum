@@ -1438,9 +1438,14 @@ div::-webkit-scrollbar-thumb
 
 h2 {
   padding: 20px;
-    font-size: px;
+    font-size: 200%;
   color: #ecf0f1;
   text-align: center;
+}
+
+h3 {
+    font-size: 175%;
+    color: black;
 }
 
 fieldset {
