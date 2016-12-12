@@ -8,7 +8,7 @@ module.exports = function (app, passport) {
             method: "GET"
         }, function (error, response, body) {
             var dat = JSON.parse(body);
-            console.log("DAT: " + JSON.stringify(dat));
+            //console.log("DAT: " + JSON.stringify(dat));
 			res.send(dat);
         });
 	});
