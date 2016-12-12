@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>YouTube Platinum Login</title>
+	<title>YouTube Platinum</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="Author" content="" />
