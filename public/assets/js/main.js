@@ -1,6 +1,15 @@
 var time_update_interval = 0;
 var selectedplaylist;
-
+var queue = [];
+var playqueue = false;
+var queueindex = 0;
+var slider;
+function resetQueue() {
+	playqueue = false;
+	$('#playqueue').addClass('btn-primary');
+	$('#playqueue').removeClass('btn-success');
+	$('#playqueue').text("Start Queue");
+}
 var tag = document.createElement('script');
 tag.id = 'iframe-demo';
 tag.src = 'https://www.youtube.com/iframe_api';
@@ -50,36 +59,33 @@ function updateTimerDisplay() {
 }
 
 function updateThumbnail() {
-
-
 	$('#videothumb').empty();
-
 	var videoid = player.getVideoData()['video_id'];
-
-
 	$('#videothumb').append('<img class="bottomthumb" src="http://img.youtube.com/vi/' + videoid + '/mqdefault.jpg"/>');
+}
 
-
+function populateQueue() {
+	$('#queuevideos').empty();
+	$.each(queue, function (index, val) {
+		$('#queuevideos').append('<a class="playlistsong" id="' + val + '" href="#"><img class="playlist-thumb" src="http://img.youtube.com/vi/' + val + '/mqdefault.jpg"/></a>');
+	})
 }
 
 
 // This function is called by initialize()
 function updateProgressBar() {
 	// Update the value of our progress bar accordingly.
-	if (player) {
-		$('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
+	if (slider) {
+		var value = (player.getCurrentTime() / player.getDuration()) * 100;
+		/*$('#progress-bar').slider({
+		    formatter: function(value) {
+		        return 'Current value: ' + value;
+		    }
+		});*/
+
+		slider.slider('setValue', value);
 	}
 }
-
-$('#progress-bar').on('mouseup touchend', function (e) {
-
-	// Calculate the new time for the video.
-	// new time in seconds = total duration in seconds * ( value of range input / 100 )
-	var newTime = player.getDuration() * (e.target.value / 100);
-
-	// Skip video to new time.
-	player.seekTo(newTime);
-});
 
 function togglePlay() {
 	if (player.getPlayerState() == 2) {
@@ -93,13 +99,25 @@ function togglePlay() {
 	}
 }
 
-function vidStateChange() {
+function vidStateChange(event) {
 	console.log("STATE WAS CHANGED");
 	console.log("TIME: ", player.getCurrentTime());
+	if (event.data === 0 && playqueue) {
+		console.log("QUEUE", queue);
+		queue.splice(0, 1);
+		populateQueue();
+		if (queue.length == 0) {
+			resetQueue();
+		} else {
+			player.loadVideoById(queue[0], 0, "large");
+		}
+	}
+
 	updateProgressBar();
 	updateTimerDisplay();
 	updateThumbnail();
 	togglePlay();
+
 }
 
 function populatePlaylists() {
@@ -120,6 +138,21 @@ function updateUser() {
 }
 
 $(document).ready(function () {
+	slider = $('#progress-bar').slider({
+		min: 0,
+		max: 100
+	});
+
+
+	$('#progress-bar').on('slideStop', function (e) {
+		console.log("VALUEOFSLIDER", e);
+		// Calculate the new time for the video.
+		// new time in seconds = total duration in seconds * ( value of range input / 100 )
+		var newTime = player.getDuration() * (e.value / 100);
+
+		// Skip video to new time.
+		player.seekTo(newTime);
+	});
 
 	$.get('/userinfo', function (data) {
 		$('.brand-name').html(data.first + " " + data.last);
@@ -197,7 +230,9 @@ $(document).ready(function () {
 	})
 
 	$(document).on("click", ".playlistsong img", function () {
-		player.loadVideoById($(this).parent().attr('id'), 0, "large");
+		if (!playqueue) {
+			player.loadVideoById($(this).parent().attr('id'), 0, "large");
+		}
 		$('.selectedvid').each(function () {
 			$(this).removeClass('selectedvid');
 		})
@@ -205,6 +240,35 @@ $(document).ready(function () {
 	});
 
 	//END CONTROLS FOR PLAYLIST
+
+	//PLAY QUEUE CONTROLS
+	$('#addqueue').click(function () {
+		console.log("ADDING TO QUEUE");
+		queue.push($('.selectedvid').parent().attr('id'));
+		populateQueue();
+	})
+
+	$('#removequeue').click(function () {
+		console.log("REMOVING FROM QUEUE");
+		if ($('#queuevideos').has('.selectedvid').length != 0) {
+			var index = queue.indexOf($('.selectedvid').attr('id'));
+			queue.splice(index, 1);
+		}
+		populateQueue();
+	});
+
+	$('#playqueue').click(function () {
+		if (queue.length != 0) {
+			playqueue = true;
+			$('#playqueue').removeClass('btn-primary');
+			$('#playqueue').addClass('btn-success');
+			$('#playqueue').text("Stop Queue");
+			player.loadVideoById(queue[0], 0, "large");
+		}
+	})
+
+	$('#export')
+
 
 
 	function doSearch() {
@@ -221,7 +285,9 @@ $(document).ready(function () {
 				$.each(data.items, function (index, val) {
 					$('#searchvids').append('<a class="search-thumb" id="' + val.id.videoId + '" href="#"><img class="thumb" src="http://img.youtube.com/vi/' + val.id.videoId + '/mqdefault.jpg"/></a>');
 					$('#' + val.id.videoId).click(function () {
-						player.loadVideoById(val.id.videoId, 0, "large");
+						if (!playqueue) {
+							player.loadVideoById(val.id.videoId, 0, "large");
+						}
 						$('.selectedvid').each(function () {
 							$(this).removeClass('selectedvid');
 						})
@@ -294,28 +360,28 @@ function formatTime(time) {
 }
 
 
-$('input[type="submit"]').mousedown(function(){
-  $(this).css('background', '#2ecc71');
+$('input[type="submit"]').mousedown(function () {
+	$(this).css('background', '#2ecc71');
 });
-$('input[type="submit"]').mouseup(function(){
-  $(this).css('background', '#1abc9c');
-});
-
-$('#loginform').click(function(){
-  $('.login').fadeToggle('slow');
-  $(this).toggleClass('green');
+$('input[type="submit"]').mouseup(function () {
+	$(this).css('background', '#1abc9c');
 });
 
+$('#loginform').click(function () {
+	$('.login').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
 
 
-$(document).mouseup(function (e)
-{
-    var container = $(".login");
 
-    if (!container.is(e.target) // if the target of the click isn't the container...
-        && container.has(e.target).length === 0) // ... nor a descendant of the container
-    {
-        container.hide();
-        $('#loginform').removeClass('green');
-    }
+$(document).mouseup(function (e) {
+	var container = $(".login");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#loginform').removeClass('green');
+	}
 });
