@@ -1271,6 +1271,15 @@ div #slider {
 	padding: 0px 0px 0px 6px!important;
 }
 
+#sidebar-wrapper > ul > li.sidebar-logout {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 50px;
+	text-indent: 0px;
+	text-align: center;
+	background-color: #5cb85c;
+}
+
 .thumb {
 	height: 90px;
 	width: auto;

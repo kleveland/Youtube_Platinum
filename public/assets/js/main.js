@@ -161,10 +161,10 @@ $(document).ready(function () {
 		})
 	})
 
-		$(document.body).on('click', '#removesong', function () {
+	$(document.body).on('click', '#removesong', function () {
 		$.post('/playlist/remove/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
 			console.log("REMOVED SONG");
-			$('.selectedvid').remove();
+			$('.playlistsong .selectedvid').remove();
 			populateSongs();
 		});
 	})
@@ -178,8 +178,7 @@ $(document).ready(function () {
 	});
 
 	//END CONTROLS FOR PLAYLIST
-
-	$("#submitbut").click(function () {
+	function doSearch() {
 		console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();
 		$.post("/search", {
@@ -204,7 +203,14 @@ $(document).ready(function () {
 			$('.searchq').slideDown();
 			//player.loadVideoById(data.items[0].id.videoId, 5, "large");
 		});
-
+	}
+	$('#searchinput').on('keyup', function (e) {
+		if (e.keyCode == 13) {
+			doSearch();
+		}
+	});
+	$("#submitbut").click(function () {
+		doSearch();
 	});
 
 	$("#closesearch").click(function () {
