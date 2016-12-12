@@ -97,7 +97,7 @@ function populatePlaylists() {
 function updateUser() {
 	$('.brand-name').remove();
 	$.get('/userinfo', function (data) {
-		$('.sidebar-brand').prepend('<div class="brand-name">'+data.first+" "+data.last+'</div>');
+		$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
 	});
 }
 
@@ -134,18 +134,50 @@ $(document).ready(function () {
 		})
 	})
 
+	//CONTROLS FOR PLAYLISTS
+	var playlist;
 
-	$(document.body).on('click', '.playlisttitle', function () {
-		var playlist = this;
-		$('#playlistcontrols').empty();
-		$('#playlistcontrols').html('<div class="selectedplaylist">' + $(this).text() + '</div><button id="addsong" type="button" class="btn btn-primary">Add Song</button><button id="removesong" type="button" class="btn btn-primary">Remove Song</button>');
-		$("#addsong").click(function() {
-			$.post('/playlist/'+$(playlist).attr('id')+'/'+player.getVideoData()['video_id'],function(data) {
-				console.log("ADDED SONG");
+	function populateSongs() {
+		$('#playlistcontrols #songs').empty();
+		$.get('/playlists/' + $(playlist).attr('id'), function (data) {
+			$.each(data, function (index, val) {
+				$('#playlistcontrols #songs').append('<a class="playlistsong" id="' + val.video_id + '" href="#"><img class="playlist-thumb" src="http://img.youtube.com/vi/' + val.video_id + '/mqdefault.jpg"/></a>');
 			})
 		});
+	}
+
+	$(document.body).on('click', '.playlisttitle', function () {
+		playlist = this;
+		$('.playlistcont').remove();
+		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button></div>');
+		populateSongs();
 		console.log($(this).text(), $(this).attr('id'));
 	});
+
+	$(document.body).on('click', '#addsong', function () {
+		$.post('/playlist/add/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
+			console.log("ADDED SONG");
+			populateSongs();
+		})
+	})
+
+		$(document.body).on('click', '#removesong', function () {
+		$.post('/playlist/remove/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
+			console.log("REMOVED SONG");
+			$('.selectedvid').remove();
+			populateSongs();
+		});
+	})
+
+	$(document).on("click", ".playlistsong img", function () {
+		player.loadVideoById($(this).parent().attr('id'), 0, "large");
+		$('.selectedvid').each(function () {
+			$(this).removeClass('selectedvid');
+		})
+		$(this).addClass("selectedvid");
+	});
+
+	//END CONTROLS FOR PLAYLIST
 
 	$("#submitbut").click(function () {
 		console.log("INPUT:", $("#searchinput").val());
@@ -184,14 +216,14 @@ $(document).ready(function () {
 		$.get('/userinfo', function (data) {
 			$(".modal-body").html('' +
 				'<div class="input-group">' +
-					'<span class="input-group-addon" id="basic-addon1">' +
-						'First Name' +
-					'</span>' +
-					'<input type="text" id="user-first" class="form-control" value="'+data.first+'" aria-describedby="basic-addon1">' +
-					'<span class="input-group-addon" id="basic-addon1">' +
-						'Last Name' +
-					'</span>' +
-					'<input type="text" id="user-last" class="form-control" value="'+data.last+'" aria-describedby="basic-addon1">' +
+				'<span class="input-group-addon" id="basic-addon1">' +
+				'First Name' +
+				'</span>' +
+				'<input type="text" id="user-first" class="form-control" value="' + data.first + '" aria-describedby="basic-addon1">' +
+				'<span class="input-group-addon" id="basic-addon1">' +
+				'Last Name' +
+				'</span>' +
+				'<input type="text" id="user-last" class="form-control" value="' + data.last + '" aria-describedby="basic-addon1">' +
 				'</div>'
 			);
 			var newData = data;

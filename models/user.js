@@ -37,10 +37,17 @@ exports.addSong = function (playlist, video, cb) {
 		// thumbnail: video.thumb
 	}
 		connection.query('INSERT INTO videos SET ?', dat, function (err, result) {
-			if (err) throw err;
-			cb(result.insertId);
+			if (err) { cb(null) } else { cb(result.insertId); };
 		});
 }
+
+exports.removeSong = function (playlist, video, cb) {
+		connection.query('DELETE FROM videos WHERE playlist_id=' + playlist + ' AND video_id="'+ video + '"', function (err, result) {
+			if (err) throw err;
+			cb();
+		});
+}
+
 
 exports.updateUser = function(userid, user, cb) {
 	connection.query('UPDATE users SET first = ?, last = ?, prof_img = ? WHERE id=' + userid, [user.first,user.last,user.prof_img],function(err, result){

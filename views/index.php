@@ -104,6 +104,8 @@
 						<div class="playlistq">
 							<div class="texthead">Manage Playlist</div>
 							<div id="playlistcontrols">
+								<div id="songs">
+								</div>
 							</div>
 						</div>
 					</div>
