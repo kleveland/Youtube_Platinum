@@ -1392,5 +1392,6 @@ div::-webkit-scrollbar-thumb
 }
 
 .brand-name {
+	float: left;
 	display: inline-block;
 }
