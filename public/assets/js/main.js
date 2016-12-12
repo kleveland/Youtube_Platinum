@@ -170,12 +170,17 @@ $(document).ready(function () {
 	populatePlaylists();
 
 	$('#playpause').click(function () {
+		console.log(player.getPlayerState());
 		if (player.getPlayerState() == 2) {
 			player.playVideo();
 		} else if (player.getPlayerState() == 1) {
 			player.pauseVideo();
 		}
+		else if(player.getPlayerState() == 5){
+            player.playVideo();
+		}
 		togglePlay();
+
 	});
 
 	$('#backward').click(function () {
@@ -325,6 +330,7 @@ $(document).ready(function () {
 				player.loadVideoById(queue[queueindex], 0, "large");
 			}
 		}
+
 	})
 
 	function stopQueue() {
