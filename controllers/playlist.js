@@ -24,6 +24,20 @@ module.exports = function (app, passport) {
 		}
 	});
 
+	app.post('/playlist/copy/:playlistname', function (req, res) {
+		console.log("ATTEMPTING LOG", req.params.playlistname, req.body.arr);
+		var songs = JSON.parse(req.body.arr);
+		if (req.params.playlistname && songs) {
+			//console.log("ADDING QUEUE " + req.params.playlistname + ":", req.body.arr);
+			// input video thumbnail from youtube's api or page source parsing
+			// var video = { id: req.params.songid, thumb: req.params.imgurl };
+			User.addQueue(req.user.id,req.params.playlistname, songs, function(id) {
+				console.log("success!", id);
+				res.sendStatus(200);
+			});
+		}
+	});
+
 	app.post('/playlist/delete/:playlistid', function(req, res) {
 		if(req.params.playlistid) {
 			User.deletePlaylist(req.params.playlistid,function(id) {

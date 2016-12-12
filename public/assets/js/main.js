@@ -4,6 +4,8 @@ var queue = [];
 var playqueue = false;
 var queueindex = 0;
 var slider;
+var dragging = false;
+
 function resetQueue() {
 	playqueue = false;
 	$('#playqueue').addClass('btn-primary');
@@ -40,8 +42,10 @@ function vidReady() {
 	clearInterval(time_update_interval);
 	time_update_interval = setInterval(function () {
 		updateTimerDisplay();
-		updateProgressBar();
-	}, 500);
+		if (!dragging) {
+			updateProgressBar();
+		}
+	}, 200);
 	// Start interval to update elapsed time display and
 	// the elapsed part of the progress bar every second.
 
@@ -76,7 +80,7 @@ function populateQueue() {
 function updateProgressBar() {
 	// Update the value of our progress bar accordingly.
 	if (slider) {
-		var value = (player.getCurrentTime() / player.getDuration()) * 100;
+		var value = (player.getCurrentTime() / player.getDuration()) * 1000;
 		/*$('#progress-bar').slider({
 		    formatter: function(value) {
 		        return 'Current value: ' + value;
@@ -140,15 +144,20 @@ function updateUser() {
 $(document).ready(function () {
 	slider = $('#progress-bar').slider({
 		min: 0,
-		max: 100
+		max: 1000
 	});
 
+	$('#progress-bar').on('slideStart', function (e) {
+		// Calculate the new time for the video.
+		dragging = true;
+	});
 
 	$('#progress-bar').on('slideStop', function (e) {
+		dragging = false;
 		console.log("VALUEOFSLIDER", e);
 		// Calculate the new time for the video.
 		// new time in seconds = total duration in seconds * ( value of range input / 100 )
-		var newTime = player.getDuration() * (e.value / 100);
+		var newTime = player.getDuration() * (e.value / 1000);
 
 		// Skip video to new time.
 		player.seekTo(newTime);
@@ -267,7 +276,23 @@ $(document).ready(function () {
 		}
 	})
 
-	$('#export')
+	$('#exportqueue').click(function () {
+		$('#modalcont').modal('show');
+		$(".modal-title").text("Export Queue");
+		$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
+		$('#modal-button').text("Add Playlist");
+		$('#modal-button').off();
+		$('#modal-button').click(function () {
+			console.log("ATTEMPTING TO ADD QUEUE PLAYLIST");
+			$.post('/playlist/copy/' + encodeURI($('#playlist-input').val()), {
+				arr: JSON.stringify(queue)
+			}, function (id) {
+				console.log("SUCCESS CREATED");
+				populatePlaylists();
+			});
+			$('#modalcont').modal('hide');
+		})
+	})
 
 
 
