@@ -1464,11 +1464,11 @@ div::-webkit-scrollbar-thumb
 }
 
 h2 {
-<<<<<<< HEAD
+
   padding: 20px;
     font-size: 200%;
-=======
->>>>>>> origin/master
+
+
   color: #ecf0f1;
   text-align: center;
 }
@@ -1512,7 +1512,7 @@ fieldset {
 .formholder {
   	background: #ecf0f1;
 	width: 50%;
-  	max-width: 3500px; max-height: 3500; margin: auto;
+  	max-width: 3500px; max-height: 3500px; margin: auto;
   	border-radius: 5px;
   	padding-top: 5px;
 }
@@ -1562,9 +1562,13 @@ a:hover:after {
 }
 
 #progress-bar .slider-selection {
-	background: #BABABA;
+	background: #000000;
 }
 
 #submitbut {
 	cursor: pointer;
+}
+
+.slider-handle.round{
+	background-image: linear-gradient(to bottom, #d9534f 0%, #d9534f 100%);
 }
