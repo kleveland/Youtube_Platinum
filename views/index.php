@@ -49,6 +49,9 @@
 					<div class="brand-name"></div>
 					<img class="profile-picture" alt="profile image">
 				</li>
+				<li class="sidebar-logout">
+					<a href="/logout">Logout</a>
+				</li>
 				<li id="playlisthead">
 					<div class="headernav">My Playlists</div>
 				</li>
@@ -60,9 +63,6 @@
 				</li>
 				<li>
 					<a href="#" id="changeName" data-toggle="modal" data-target="#modalcont">Change Display Name</a>
-				</li>
-				<li>
-					<a href="#">Other</a>
 				</li>
 			</ul>
 		</div>
@@ -104,6 +104,8 @@
 						<div class="playlistq">
 							<div class="texthead">Manage Playlist</div>
 							<div id="playlistcontrols">
+								<div id="songs">
+								</div>
 							</div>
 						</div>
 					</div>

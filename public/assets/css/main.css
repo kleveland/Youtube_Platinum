@@ -149,7 +149,6 @@ ul.img-container img {
 	display: block;
 	font-weight: bold;
 	padding: 10px 0 10px 10px;
-	margin-bottom: 10px;
 	background-color: #f0ad4e;
 }
 
@@ -1272,10 +1271,42 @@ div #slider {
 	padding: 0px 0px 0px 6px!important;
 }
 
+#sidebar-wrapper > ul > li.sidebar-logout {
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 50px;
+	text-indent: 0px;
+	text-align: center;
+	background-color: #5cb85c;
+}
+
 .thumb {
 	height: 90px;
 	width: auto;
 	margin: 5px 5px 5px 5px;
+}
+
+.songbut {
+	display: block;
+	width: 100%;
+	margin-top: 7.5px;
+	margin-bottom: 7.5px;
+}
+
+.playlist-thumb {
+	height: auto;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.selectedplaylist {
+	text-align: center;
+	font-size: 20px;
+	font-weight: bold;
 }
 
 #progressBar {
@@ -1334,6 +1365,7 @@ div #slider {
 #playlistcontrols,#queuevids {
 	overflow-x: hidden;
 	overflow-y: auto;
+	height: 459px;
 }
 
 .playq {
@@ -1369,13 +1401,6 @@ li .headernav {
 
 div.row {
 	margin: 0;
-}
-
-div::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.9);
-	border-radius: 10px;
-	background-color: #e55;
 }
 
 div::-webkit-scrollbar
