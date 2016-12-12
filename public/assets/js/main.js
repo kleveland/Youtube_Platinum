@@ -59,16 +59,9 @@ function updateTimerDisplay() {
 }
 
 function updateThumbnail() {
-
-
 	$('#videothumb').empty();
-
 	var videoid = player.getVideoData()['video_id'];
-
-
 	$('#videothumb').append('<img class="bottomthumb" src="http://img.youtube.com/vi/' + videoid + '/mqdefault.jpg"/>');
-
-
 }
 
 function populateQueue() {
@@ -82,9 +75,13 @@ function populateQueue() {
 // This function is called by initialize()
 function updateProgressBar() {
 	// Update the value of our progress bar accordingly.
-	if (player) {
-		$('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
-	}
+	var value = (player.getCurrentTime() / player.getDuration()) * 100;
+        $('#progress-bar').slider({
+            formatter: function(value) {
+                return 'Current value: ' + value;
+            }
+        });
+
 }
 
 $('#progress-bar').on('mouseup touchend', function (e) {
@@ -352,3 +349,30 @@ function formatTime(time) {
 	return minutes + ":" + seconds;
 
 }
+
+
+$('input[type="submit"]').mousedown(function(){
+  $(this).css('background', '#2ecc71');
+});
+$('input[type="submit"]').mouseup(function(){
+  $(this).css('background', '#1abc9c');
+});
+
+$('#loginform').click(function(){
+  $('.login').fadeToggle('slow');
+  $(this).toggleClass('green');
+});
+
+
+
+$(document).mouseup(function (e)
+{
+    var container = $(".login");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.hide();
+        $('#loginform').removeClass('green');
+    }
+});
