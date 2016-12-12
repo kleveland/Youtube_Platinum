@@ -180,14 +180,6 @@ $(document).ready(function () {
 		togglePlay();
 	});
 
-    $('#forward').click(function () {
-        player.seekTo(player.getCurrentTime()+10);
-    });
-
-    $('#backward').click(function () {
-        player.seekTo(player.getCurrentTime()-10);
-    });
-
 	$('#addplaylist').click(function () {
 		$(".modal-title").text("Add Playlist");
 		$(".modal-body").html('<div class="input-group"> <span class="input-group-addon" id="basic-addon1">Playlist Name</span> <input type="text" id="playlist-input" class="form-control" placeholder="Name" aria-describedby="basic-addon1"> </div>');
