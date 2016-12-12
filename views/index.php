@@ -121,11 +121,15 @@
 							<div class="texthead">Play Queue</div>
 							<div id="queuevids">
 								<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
-								<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
+								<button id="stopqueue" type="button" class="songbut btn btn-primary">Stop Queue</button>
 								<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
 								<div class="songbutcont">
 									<button id="addqueue" type="button" class="songbut50 btn btn-primary">Add</button>
 									<button id="removequeue" type="button" class="songbut50 btn btn-primary">Remove</button>
+								</div>
+								<div class="songbutcont">
+									<button id="upqueue" type="button" class="songbut50 btn btn-success">Up</button>
+									<button id="downqueue" type="button" class="songbut50 btn btn-success">Down</button>
 								</div>
 								<div id="queuevideos">
 								</div>

@@ -280,8 +280,13 @@ $(document).ready(function () {
 	$('#removequeue').click(function () {
 		console.log("REMOVING FROM QUEUE");
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
-			var index = queue.indexOf($('.selectedvid').attr('id'));
-			queue.splice(index, 1);
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+
+			console.log("INDEx", index);
+			console.log("QUEUE", queue);
+			if (index != -1) {
+				queue.splice(index, 1);
+			}
 		}
 		populateQueue();
 	});
@@ -307,11 +312,42 @@ $(document).ready(function () {
 		}
 	})
 
-	$('#queuestop').click(function () {
+	$('#stopqueue').click(function () {
 		playqueue = false;
 		$('#playqueue').removeClass('btn-success');
+		$('#playqueue').removeClass('btn-primary');
+		$('#playqueue').addClass('btn-primary');
 		$('#playqueue').text('Play Queue');
 		player.stopVideo();
+	})
+
+	$('#upqueue').click(function () {
+		console.log("MOVING DOWN");
+		if ($('#queuevideos').has('.selectedvid').length != 0) {
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+			console.log("INDEX", index);
+			console.log("QUEUE", queue);
+			var temp = queue[index];
+			if ((index - 1) >= 0) {
+				queue[index] = queue[index - 1];
+				queue[index - 1] = temp;
+			}
+			populateQueue();
+		}
+	})
+	$('#downqueue').click(function () {
+		if ($('#queuevideos').has('.selectedvid').length != 0) {
+			console.log("MOVINGUP");
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+			console.log("INDEX", index);
+			console.log("QUEUE", queue);
+			var temp = queue[index];
+			if ((index + 1) < queue.length) {
+				queue[index] = queue[index + 1];
+				queue[index + 1] = temp;
+			}
+			populateQueue();
+		}
 	})
 
 	$('#exportqueue').click(function () {
