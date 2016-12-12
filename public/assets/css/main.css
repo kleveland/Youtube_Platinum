@@ -439,6 +439,12 @@ img.aligncenter {
 	text-align: center;
 }
 
+.bottomthumb {
+	height: 80px;
+	width: auto;
+	margin-bottom: 25px;
+}
+
 #projects {
 	padding: 0;
 	color: #575757;
