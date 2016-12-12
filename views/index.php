@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>YouTube Platinum Login</title>
+	<title>YouTube Platinum</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="Author" content="" />
@@ -112,7 +112,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="currentvideo">
-							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/UqyT8IEBkvY?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+							<iframe id="vidplayer" class="video selectedvid" width="640" height="360" src="https://www.youtube.com/embed/UqyT8IEBkvY?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="col-md-2">
