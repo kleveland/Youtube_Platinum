@@ -50,25 +50,22 @@ function updateTimerDisplay() {
 }
 
 function updateThumbnail() {
-
-
 	$('#videothumb').empty();
-
 	var videoid = player.getVideoData()['video_id'];
-
-
 	$('#videothumb').append('<img class="bottomthumb" src="http://img.youtube.com/vi/' + videoid + '/mqdefault.jpg"/>');
-
-
 }
 
 
 // This function is called by initialize()
 function updateProgressBar() {
 	// Update the value of our progress bar accordingly.
-	if (player) {
-		$('#progress-bar').val((player.getCurrentTime() / player.getDuration()) * 100);
-	}
+	var value = (player.getCurrentTime() / player.getDuration()) * 100;
+        $('#progress-bar').slider({
+            formatter: function(value) {
+                return 'Current value: ' + value;
+            }
+        });
+
 }
 
 $('#progress-bar').on('mouseup touchend', function (e) {

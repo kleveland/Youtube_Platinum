@@ -15,6 +15,7 @@
 	<link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/simple-sidebar.css" rel="stylesheet" type="text/css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.3/css/bootstrap-slider.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
@@ -141,8 +142,8 @@
 							<div class="footer-bar text-center">
 								<div class="progress-bar-new">
 									<div class="videotime">
-                                        <input type="range" id="progress-bar" value="0">
-									</div>
+                                        <input id="progress-bar" data-slider-id='progress-bar' type="text" data-slider-min="0" data-slider-max="20" data-slider-step="1" />
+								</div>
 								</div>
                                 <div class="controls-container">
                                     <div class="row">
@@ -180,9 +181,11 @@
 				<script src="assets/js/jquery.js"></script>
 				<!-- Bootstrap Core JavaScript -->
 				<script src="assets/js/bootstrap.min.js"></script>
+				<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.3/bootstrap-slider.js"></script>
 				<script src="assets/js/main.js"></script>
 				<!-- Menu Toggle Script -->
 				<script>
+
 					$("#menu-toggle ").click(function(e) {
 						e.preventDefault();
 						$("#wrapper ").toggleClass("toggled ");
