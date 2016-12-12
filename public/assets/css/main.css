@@ -1429,3 +1429,14 @@ div::-webkit-scrollbar-thumb
 	float: left;
 	display: inline-block;
 }
+.thumbnail{
+	   float: left;
+   }
+
+.time{
+	float:right;
+}
+
+#progress-bar .slider-selection {
+	background: #BABABA;
+}

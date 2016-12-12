@@ -19,14 +19,15 @@ function onYouTubeIframeAPIReady() {
 }
 
 var time_update_interval = setInterval(function () {
-	//updateTimerDisplay();
+	updateTimerDisplay();
 	updateProgressBar();
 }, 500);
 
 function vidReady() {
-	console.log("READY!!");
+
 	// Update the controls on load
-	updateTimerDisplay();
+    updateThumbnail();
+    updateTimerDisplay();
 	updateProgressBar();
 
 	// Clear any old interval.
@@ -42,8 +43,24 @@ function vidReady() {
 // This function is called by initialize()
 function updateTimerDisplay() {
 	// Update current time text display.
-	$('#current-time').text(formatTime(player.getCurrentTime()));
+	console.log(player.getCurrentTime());
+
+	$('#current-time').player.getCurrentTime();
 	$('#duration').text(formatTime(player.getDuration()));
+}
+
+function updateThumbnail(){
+
+
+    $('#videothumb').empty();
+    var url = player.getVideoUrl();
+
+    var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+
+
+    $('#videothumb').append('<img class="thumb"src="http://img.youtube.com/vi/' + videoid[1] + '/mqdefault.jpg"/>');
+
+
 }
 
 
@@ -261,3 +278,16 @@ $(document).ready(function () {
 		});
 	});
 });
+
+
+function formatTime(time) {
+    time = Math.round(time);
+
+    var minutes = Math.floor(time / 60),
+        seconds = time - minutes * 60;
+
+    seconds = seconds < 10 ? '0' + seconds : seconds;
+
+    return minutes + ":" + seconds;
+
+}

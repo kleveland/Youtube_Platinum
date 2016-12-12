@@ -141,14 +141,30 @@
 							<div class="footer-bar text-center">
 								<div class="progress-bar-new">
 									<div class="videotime">
-										<input type="range" id="progress-bar" value="0">
+                                        <input type="range" id="progress-bar" value="0">
 									</div>
 								</div>
+                                <div class="controls-container">
+                                    <div class="row">
+                                        <div class="thumbnail">
+                                            <div id="videothumb">
+
+                                            </div>
+                                        </div>
 								<div class="controls">
 									<button id="backward" type="button" class="btn btn-danger btn-circle btn-lg btn-left"><i class="glyphicon glyphicon-backward"></i></button>
 									<button id="playpause" type="button" class="btn btn-danger btn-circle btn-xl"><i class="glyphicon glyphicon-play"></i></button>
 									<button id="forward" type="button" class="btn btn-danger btn-circle btn-lg btn-right"><i class="glyphicon glyphicon-forward"></i></button>
 								</div>
+
+                                <div class="time" >
+                                    <ul>
+                                        <li>
+                                            <p><span id="current-time">0:00</span> / <span id="duration">0:00</span></p
+                                        </li>
+                                    </ul>
+
+                                </div>
 							</div>
 						</div>
 						<!-- END OF FOOTER -->
