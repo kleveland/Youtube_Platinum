@@ -5,6 +5,8 @@ var playqueue = false;
 var queueindex = 0;
 var slider;
 var dragging = false;
+var playlist;
+var playlistsongs;
 
 function resetQueue() {
 	playqueue = false;
@@ -215,11 +217,11 @@ $(document).ready(function () {
 	})
 
 	//CONTROLS FOR PLAYLISTS
-	var playlist;
 
 	function populateSongs() {
 		$('#playlistcontrols #songs').empty();
 		$.get('/playlists/' + $(playlist).attr('id'), function (data) {
+			playlistsongs = data;
 			$.each(data, function (index, val) {
 				$('#playlistcontrols #songs').append('<a class="playlistsong" id="' + val.video_id + '" href="#"><img class="playlist-thumb" src="http://img.youtube.com/vi/' + val.video_id + '/mqdefault.jpg"/></a>');
 			})
@@ -229,7 +231,7 @@ $(document).ready(function () {
 	$(document.body).on('click', '.playlisttitle', function () {
 		playlist = this;
 		$('.playlistcont').remove();
-		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button><button id="deleteplaylist" type="button" class="songbut btn btn-danger">Delete Playlist</button></div>');
+		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button><button id="exportsong" type="button" class="songbut btn btn-primary">Load Playlist</button><button id="deleteplaylist" type="button" class="songbut btn btn-danger">Delete Playlist</button></div>');
 		populateSongs();
 		console.log($(this).text(), $(this).attr('id'));
 	});
@@ -239,6 +241,15 @@ $(document).ready(function () {
 			console.log("ADDED SONG");
 			populateSongs();
 		})
+	})
+
+	$(document.body).on('click', '#exportsong', function () {
+		queue = [];
+		stopQueue();
+		$.each(playlistsongs, function(index,val) {
+			queue.push(val.video_id);
+		});
+		populateQueue();
 	})
 
 	$(document.body).on('click', '#removesong', function () {
@@ -316,13 +327,17 @@ $(document).ready(function () {
 		}
 	})
 
-	$('#stopqueue').click(function () {
-		playqueue = false;
+	function stopQueue() {
+				playqueue = false;
 		$('#playqueue').removeClass('btn-success');
 		$('#playqueue').removeClass('btn-primary');
 		$('#playqueue').addClass('btn-primary');
 		$('#playqueue').text('Play Queue');
 		player.stopVideo();
+	}
+
+	$('#stopqueue').click(function () {
+		stopQueue();
 	})
 
 	$('#upqueue').click(function () {
