@@ -490,8 +490,6 @@ $('#loginform').click(function () {
 	$(this).toggleClass('green');
 });
 
-
-
 $(document).mouseup(function (e) {
 	var container = $(".login");
 
@@ -501,5 +499,74 @@ $(document).mouseup(function (e) {
 	{
 		container.hide();
 		$('#loginform').removeClass('green');
+	}
+});
+
+
+$('#pictures').click(function () {
+	$('.pic').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
+
+$(document).mouseup(function (e) {
+	var container = $(".pic");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#pictures').removeClass('green');
+	}
+});
+
+$('#hamburger').click(function () {
+	$('.ham').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
+
+$(document).mouseup(function (e) {
+	var container = $(".ham");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#hamburger').removeClass('green');
+	}
+});
+
+$('#rightist').click(function () {
+	$('.right').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
+
+$(document).mouseup(function (e) {
+	var container = $(".right");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#rightist').removeClass('green');
+	}
+});
+
+$('#leftist').click(function () {
+	$('.left').fadeToggle('slow');
+	$(this).toggleClass('green');
+});
+
+$(document).mouseup(function (e) {
+	var container = $(".left");
+
+	if (!container.is(e.target) // if the target of the click isn't the container...
+		&&
+		container.has(e.target).length === 0) // ... nor a descendant of the container
+	{
+		container.hide();
+		$('#leftist').removeClass('green');
 	}
 });

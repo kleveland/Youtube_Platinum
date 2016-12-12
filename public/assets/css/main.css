@@ -247,7 +247,7 @@ ul.img-container img {
 
 .header-container {
 	width: 100%;
-	height: 600px;
+	height: 100%;
 	border-left: none;
 	border-right: none;
 	position: relative;
@@ -1434,6 +1434,16 @@ div::-webkit-scrollbar-thumb
   margin-left: 0px;
 
 }
+#pic{
+    position:relative;
+    left: 5%;
+}
+#site{
+    width:50%;
+    height: 50%;
+    position: relative;
+    left: 5%;
+}
 
 h2 {
 <<<<<<< HEAD
@@ -1452,7 +1462,7 @@ h3 {
 
 h4{
     position: relative;
-    left: 10%;
+    left: 5%;
     text-align:left;
 }
 
@@ -1464,6 +1474,7 @@ fieldset {
 .login {
   position: relative;
   max-width:  3500px;
+    max-height: 35000;
     margin: auto;
   display: none;
     color: #eff;
@@ -1483,7 +1494,7 @@ fieldset {
 .formholder {
   	background: #ecf0f1;
 	width: 50%;
-  	max-width: 3500px;  margin: auto;
+  	max-width: 3500px; max-height: 3500; margin: auto;
   	border-radius: 5px;
   	padding-top: 5px;
 }
@@ -1491,19 +1502,7 @@ fieldset {
   	outline: none;
   	box-shadow: 0 0 1px 1px #1abc9c;
 }
-.formholder input[type="submit"] {
-  	background: #1abc9c;
-  	padding: 10px;
-  	font-size: 20px;
-  	display: block;
-  	width: 100%;
-  	border: none;
-  	color: #eff;
-  	border-radius: 5px;
-}
-.formholder input[type="submit"]:hover {
-  	background: #1bc6a4;
-}
+
 
 .randompad {
   	padding: 10px;
@@ -1518,6 +1517,13 @@ a {
   	text-decoration: none;
 }
 a:hover {
+  	color: #1abc9c;
+}
+
+b {
+  	color: black;
+}
+a:hover:after {
   	color: #1abc9c;
 }
 

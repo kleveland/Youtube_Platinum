@@ -8,7 +8,6 @@
 	<meta name="Author" content="" />
 	<link rel="shortcut icon" href="assets/images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
-	<link href="assets/css/mobile.css" rel="stylesheet" type="text/css" />
 	<!-- FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Nunito' rel='stylesheet' type='text/css'>
 	<!-- CORE CSS -->
@@ -25,7 +24,7 @@
         <div class="info-overlay">
             <!-- MIDDLE TEXT -->
             <div class="row-fluid info-middle">
-                <h1 class="text-center text-large uppercase text-white" style="padding-bottom: 20px;font-weight:100;">
+                <h1 class="text-center text-large uppercase text-white" style="padding-top: 40px; padding-bottom: 20px;font-weight:100;">
 					YouTube Platinum
 				</h1>
                 <?php
@@ -46,10 +45,23 @@
                                         <div class="randompad">
                                             <fieldset>
                                                 <h3>This is how you use YoutubePlatium:</h3>
-                                                <h4>Login using your Gmail</h4>
-                                                <h4>Search up you want to watch</h4>
-                                                <h4>Open up the Hamburger Menu on the left to Create, Manage, and Delete your playlists </h4>
-                                                <h4></h4>
+                                                <h4>Login using your Gmail</b></h4>
+                                                <h4><b id="pictures">Search up you want to watch in the search bar on the top right</b></h4>
+                                                <div class="pic">
+                                                     <img src="/assets/images/Search.png" id="site">
+                                                </div>
+                                                <h4><b id="hamburger">Open up Hamburger Menu on the left to select playlists and manage your account</b></h4>
+                                                <div class="ham">
+                                                     <img src="/assets/images/Hamburger.png" id="site">
+                                                </div>
+                                                <h4><b id="leftist">Manage your existing playlists to the left of the video</b></h4>
+                                                <div class="left">
+                                                     <img src="/assets/images/Left.png" id="site">
+                                                </div>
+                                                <h4><b id="rightist">Create, add and play your playlists to the right of the video</b></h4>
+                                                <div class="right">
+                                                     <img src="/assets/images/Right.png" id="site">
+                                                </div>
                                             </fieldset>
                                         </div>
                                     </div>
