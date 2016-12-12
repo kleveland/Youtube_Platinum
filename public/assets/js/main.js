@@ -28,7 +28,7 @@ function onYouTubeIframeAPIReady() {
 			'onStateChange': vidStateChange
 		}
 	});
-	console.log("APIREADY");
+	//console.log("APIREADY");
 }
 
 var time_update_interval;
@@ -106,8 +106,8 @@ function togglePlay() {
 }
 
 function vidStateChange(event) {
-	console.log("STATE WAS CHANGED");
-	console.log("TIME: ", player.getCurrentTime());
+	//console.log("STATE WAS CHANGED");
+	//console.log("TIME: ", player.getCurrentTime());
 	if (event.data === 0 && playqueue) {
 		if (++queueindex >= queue.length) {
 			queueindex = queue.length - 1;
@@ -125,7 +125,7 @@ function vidStateChange(event) {
 function populatePlaylists() {
 	$('.playlisttitle').remove();
 	$.get('/playlists', function (data) {
-		console.log(data);
+		//console.log(data);
 		$.each(data, function (index, val) {
 			$('#playlisthead').append('<li id="' + val.id + '" class="playlisttitle"><a href="#">' + val.name + '</a></li>')
 		});
@@ -152,7 +152,7 @@ $(document).ready(function () {
 
 	$('#progress-bar').on('slideStop', function (e) {
 		dragging = false;
-		console.log("VALUEOFSLIDER", e);
+		//console.log("VALUEOFSLIDER", e);
 		// Calculate the new time for the video.
 		// new time in seconds = total duration in seconds * ( value of range input / 100 )
 		var newTime = player.getDuration() * (e.value / 1000);
@@ -183,7 +183,7 @@ $(document).ready(function () {
 			if (--queueindex < 0) {
 				queueindex = 0;
 			}
-			console.log("QUEUEINDEX", queueindex);
+			//console.log("QUEUEINDEX", queueindex);
 			player.loadVideoById(queue[queueindex], 0, "large");
 		} else {
 			player.seekTo(0);
@@ -209,7 +209,7 @@ $(document).ready(function () {
 		$('#modal-button').off();
 		$('#modal-button').click(function () {
 			$.post('/playlist/' + encodeURI($('#playlist-input').val()), function (id) {
-				console.log("SUCCESS CREATED");
+				//console.log("SUCCESS CREATED");
 			});
 			$('#modalcont').modal('hide');
 			populatePlaylists();
@@ -233,12 +233,12 @@ $(document).ready(function () {
 		$('.playlistcont').remove();
 		$('#playlistcontrols').prepend('<div class="playlistcont"><div class="selectedplaylist">' + $(playlist).text() + '</div><button id="addsong" type="button" class="songbut btn btn-primary">Add Song</button><button id="removesong" type="button" class="songbut btn btn-primary">Remove Song</button><button id="exportsong" type="button" class="songbut btn btn-primary">Load Playlist</button><button id="deleteplaylist" type="button" class="songbut btn btn-danger">Delete Playlist</button></div>');
 		populateSongs();
-		console.log($(this).text(), $(this).attr('id'));
+		//console.log($(this).text(), $(this).attr('id'));
 	});
 
 	$(document.body).on('click', '#addsong', function () {
 		$.post('/playlist/add/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
-			console.log("ADDED SONG");
+			//console.log("ADDED SONG");
 			populateSongs();
 		})
 	})
@@ -254,7 +254,7 @@ $(document).ready(function () {
 
 	$(document.body).on('click', '#removesong', function () {
 		$.post('/playlist/remove/' + $(playlist).attr('id') + '/' + player.getVideoData()['video_id'], function (data) {
-			console.log("REMOVED SONG");
+			//console.log("REMOVED SONG");
 			$('.playlistsong .selectedvid').remove();
 			populateSongs();
 		});
@@ -262,7 +262,7 @@ $(document).ready(function () {
 
 	$(document.body).on('click', '#deleteplaylist', function () {
 		$.post('/playlist/delete/' + $(playlist).attr('id'), function (data) {
-			console.log("REMOVED SONG");
+			//console.log("REMOVED SONG");
 			$('.playlistcont').remove();
 			$('#songs').empty();
 			populatePlaylists();
@@ -283,7 +283,7 @@ $(document).ready(function () {
 
 	//PLAY QUEUE CONTROLS
 	$('#addqueue').click(function () {
-		console.log("ADDING TO QUEUE");
+		//console.log("ADDING TO QUEUE");
 		if(playqueue) {
 			queue.push($('.selectedvid').parent().attr('id'));
 		} else {
@@ -293,12 +293,12 @@ $(document).ready(function () {
 	})
 
 	$('#removequeue').click(function () {
-		console.log("REMOVING FROM QUEUE");
+		//console.log("REMOVING FROM QUEUE");
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
 			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
 
-			console.log("INDEx", index);
-			console.log("QUEUE", queue);
+			//console.log("INDEx", index);
+			//console.log("QUEUE", queue);
 			if (index != -1) {
 				queue.splice(index, 1);
 			}
@@ -328,7 +328,8 @@ $(document).ready(function () {
 	})
 
 	function stopQueue() {
-				playqueue = false;
+		playqueue = false;
+		queueindex = 0;
 		$('#playqueue').removeClass('btn-success');
 		$('#playqueue').removeClass('btn-primary');
 		$('#playqueue').addClass('btn-primary');
@@ -341,11 +342,11 @@ $(document).ready(function () {
 	})
 
 	$('#upqueue').click(function () {
-		console.log("MOVING UP");
+		//console.log("MOVING UP");
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
 			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
-			console.log("INDEX", index);
-			console.log("QUEUE", queue);
+			//console.log("INDEX", index);
+			//console.log("QUEUE", queue);
 			var temp = queue[index];
 			if ((index - 1) >= 0) {
 				queue[index] = queue[index - 1];
@@ -356,10 +357,10 @@ $(document).ready(function () {
 	})
 	$('#downqueue').click(function () {
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
-			console.log("MOVING DOWN");
+			//console.log("MOVING DOWN");
 			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
-			console.log("INDEX", index);
-			console.log("QUEUE", queue);
+			//console.log("INDEX", index);
+			//console.log("QUEUE", queue);
 			var temp = queue[index];
 			if ((index + 1) < queue.length) {
 				queue[index] = queue[index + 1];
@@ -376,11 +377,11 @@ $(document).ready(function () {
 		$('#modal-button').text("Add Playlist");
 		$('#modal-button').off();
 		$('#modal-button').click(function () {
-			console.log("ATTEMPTING TO ADD QUEUE PLAYLIST");
+			//console.log("ATTEMPTING TO ADD QUEUE PLAYLIST");
 			$.post('/playlist/copy/' + encodeURI($('#playlist-input').val()), {
 				arr: JSON.stringify(queue)
 			}, function (id) {
-				console.log("SUCCESS CREATED");
+				//console.log("SUCCESS CREATED");
 				populatePlaylists();
 			});
 			$('#modalcont').modal('hide');
@@ -390,7 +391,7 @@ $(document).ready(function () {
 
 
 	function doSearch() {
-		console.log("INPUT:", $("#searchinput").val());
+		//console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();
 		$.post("/search", {
 			dat: input
@@ -456,7 +457,7 @@ $(document).ready(function () {
 				}, function (data) {
 					$('#modalcont').modal('hide');
 					$('.brand-name').remove();
-					console.log("DATA!!!", data);
+					//console.log("DATA!!!", data);
 					$('.sidebar-brand').prepend('<div class="brand-name">' + data.first + " " + data.last + '</div>');
 				});
 			})

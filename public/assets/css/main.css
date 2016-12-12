@@ -63,6 +63,19 @@ button.menu {
 
 .headertext {
 	display: inline-block;
+
+}
+
+.headertextlogin {
+	display: block;
+	height: 40vh;
+	background-color: #d9534f;
+	text-align: center;
+	font-size: 60px;
+}
+
+.headerlogintext {
+	padding-top: 10%;
 }
 
 .navheader {
@@ -270,11 +283,17 @@ ul.img-container img {
 }
 
 .login-btn {
-	height: 50px;
-	width: 175px;
-	line-height: 50px;
 	display: block;
 	margin: auto;
+	margin-bottom: 20px;
+	width: 200px;
+}
+
+.alertlogin {
+	width: 50%;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .signup-banner {

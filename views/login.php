@@ -14,74 +14,81 @@
 	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 	<link href="assets/plugins/fontawesome/css/font-awesome.css" rel="stylesheet" type="text/css" />
 	<link href="assets/css/main.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <!-- HEADER CONTAINER -->
-    <div class="header-container">
-        <!-- INFO OVERLAY -->
-        <div class="info-overlay">
-            <!-- MIDDLE TEXT -->
-            <div class="row-fluid info-middle">
-                <h1 class="text-center text-large uppercase text-white" style="padding-top: 40px; padding-bottom: 20px;font-weight:100;">
-					YouTube Platinum
-				</h1>
-                <?php
+
+	<div id="myModal" class="modal fade" role="dialog">
+		<div class="modal-dialog">
+
+			<!-- Modal content-->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Tutorial</h4>
+				</div>
+				<div class="modal-body">
+					<h3>This is how you use YoutubePlatium:</h3>
+					<h4>Login using your Gmail</b>
+					</h4>
+					<h4><b id="pictures">Search up you want to watch in the search bar on the top right</b></h4>
+					<div class="pic">
+						<img src="/assets/images/Search.png" id="site">
+					</div>
+					<h4><b id="hamburger">Open up Hamburger Menu on the left to select playlists and manage your account</b></h4>
+					<div class="ham">
+						<img src="/assets/images/Hamburger.png" id="site">
+					</div>
+					<h4><b id="leftist">Manage your existing playlists to the left of the video</b></h4>
+					<div class="left">
+						<img src="/assets/images/Left.png" id="site">
+					</div>
+					<h4><b id="rightist">Create, add and play your playlists to the right of the video</b></h4>
+					<div class="right">
+						<img src="/assets/images/Right.png" id="site">
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- HEADER CONTAINER -->
+	<div class="header-container">
+		<!-- INFO OVERLAY -->
+		<div class="info-overlay">
+			<!-- MIDDLE TEXT -->
+			<div class="row-fluid info-middle">
+				<div class="headertextlogin">
+					<div class="headerlogintext"><b>YouTube</b> Platinum
+					</div>
+				</div>
+				<div class="alertlogin">
+					<?php
 					if(!empty($_GET['error'])) {
-						echo '<div class="alert alert-danger">' .
-							'<strong>Oops!</strong>' . $_GET['error'] .
+						echo '<div class="alert alert-danger">' . $_GET['error'] .
 						'</div>';
 					}
-				?> <a class="button btn-danger login-btn" href="/auth/google">Login With Google</a>
+				?>
+				</div>
+				<a class="login-btn btn btn-danger btn-lg" href="/auth/google">Login With Google</a>
+
+				<button type="button" class="login-btn btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Tutorial</button>
 
 
-
-                            <div id="navthing">
-                                <h2><a href="#" id="loginform">About Us</a></h2>
-                                <div class="login">
-                                    <div class="arrow-up"></div>
-                                    <div class="formholder">
-                                        <div class="randompad">
-                                            <fieldset>
-                                                <h3>This is how you use YoutubePlatium:</h3>
-                                                <h4>Login using your Gmail</b></h4>
-                                                <h4><b id="pictures">Search up you want to watch in the search bar on the top right</b></h4>
-                                                <div class="pic">
-                                                     <img src="/assets/images/Search.png" id="site">
-                                                </div>
-                                                <h4><b id="hamburger">Open up Hamburger Menu on the left to select playlists and manage your account</b></h4>
-                                                <div class="ham">
-                                                     <img src="/assets/images/Hamburger.png" id="site">
-                                                </div>
-                                                <h4><b id="leftist">Manage your existing playlists to the left of the video</b></h4>
-                                                <div class="left">
-                                                     <img src="/assets/images/Left.png" id="site">
-                                                </div>
-                                                <h4><b id="rightist">Create, add and play your playlists to the right of the video</b></h4>
-                                                <div class="right">
-                                                     <img src="/assets/images/Right.png" id="site">
-                                                </div>
-                                            </fieldset>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-            </div>
-            <!-- END OF MIDDLE TEXT -->
-        </div>
-        <!-- END OF INFO OVERLAY -->
-    </div>
-    <!-- END OF HEADER -->
-    <!-- JAVASCRIPT FILES -->
-    <script type="text/javascript" src="http://www.youtube.com/player_api"></script>
-    <script type="text/javascript" src="assets/plugins/js/jquery-2.1.4.min.js"></script>
-    <script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-    <script type="text/javascript" src="assets/js/main.js"></script>
+			</div>
+			<!-- END OF MIDDLE TEXT -->
+		</div>
+		<!-- END OF INFO OVERLAY -->
+	</div>
+	<!-- END OF HEADER -->
+	<!-- JAVASCRIPT FILES -->
+	<script type="text/javascript" src="http://www.youtube.com/player_api"></script>
+	<script type="text/javascript" src="assets/plugins/js/jquery-2.1.4.min.js"></script>
+	<script type="text/javascript" src="assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 </body>
 
 </html>
