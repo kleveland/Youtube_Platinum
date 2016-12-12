@@ -48,6 +48,7 @@
                                                 <h3>This is how you use YoutubePlatium:</h3>
                                                 <h4>Login using your Gmail</h4>
                                                 <h4>Search up you want to watch</h4>
+                                                <h4>Open up the Hamburger Menu to Create, Manage, and Delete your playlists </h4>
                                                 <h4></h4>
                                             </fieldset>
                                         </div>
