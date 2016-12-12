@@ -46,6 +46,8 @@
                                         <div class="randompad">
                                             <fieldset>
                                                 <h3>This is how you use YoutubePlatium</h3>
+                                                <h4>Login using your Gmail</h4>
+                                                <h4>Search up you want to watch</h4>
                                             </fieldset>
                                         </div>
                                     </div>
