@@ -18,21 +18,21 @@ function onYouTubeIframeAPIReady() {
 	console.log("APIREADY");
 }
 
-var time_update_interval = setInterval(function () {
-	updateTimerDisplay();
-	updateProgressBar();
-}, 500);
+var time_update_interval;
 
 function vidReady() {
 
 	// Update the controls on load
-    updateThumbnail();
-    updateTimerDisplay();
+	updateThumbnail();
+	updateTimerDisplay();
 	updateProgressBar();
 
 	// Clear any old interval.
 	clearInterval(time_update_interval);
-
+	time_update_interval = setInterval(function () {
+		updateTimerDisplay();
+		updateProgressBar();
+	}, 500);
 	// Start interval to update elapsed time display and
 	// the elapsed part of the progress bar every second.
 
@@ -43,22 +43,21 @@ function vidReady() {
 // This function is called by initialize()
 function updateTimerDisplay() {
 	// Update current time text display.
-	console.log(player.getCurrentTime());
+	//console.log(player.getCurrentTime());
 
-	$('#current-time').player.getCurrentTime();
+	$('#current-time').text(formatTime(player.getCurrentTime()));
 	$('#duration').text(formatTime(player.getDuration()));
 }
 
-function updateThumbnail(){
+function updateThumbnail() {
 
 
-    $('#videothumb').empty();
-    var url = player.getVideoUrl();
+	$('#videothumb').empty();
 
-    var videoid = url.match(/(?:https?:\/{2})?(?:w{3}\.)?youtu(?:be)?\.(?:com|be)(?:\/watch\?v=|\/)([^\s&]+)/);
+	var videoid = player.getVideoData()['video_id'];
 
 
-    $('#videothumb').append('<img class="thumb"src="http://img.youtube.com/vi/' + videoid[1] + '/mqdefault.jpg"/>');
+	$('#videothumb').append('<img class="bottomthumb" src="http://img.youtube.com/vi/' + videoid + '/mqdefault.jpg"/>');
 
 
 }
@@ -98,6 +97,8 @@ function vidStateChange() {
 	console.log("STATE WAS CHANGED");
 	console.log("TIME: ", player.getCurrentTime());
 	updateProgressBar();
+	updateTimerDisplay();
+	updateThumbnail();
 	togglePlay();
 }
 
@@ -204,6 +205,8 @@ $(document).ready(function () {
 	});
 
 	//END CONTROLS FOR PLAYLIST
+
+
 	function doSearch() {
 		console.log("INPUT:", $("#searchinput").val());
 		var input = $("#searchinput").val();
@@ -279,13 +282,40 @@ $(document).ready(function () {
 
 
 function formatTime(time) {
-    time = Math.round(time);
+	time = Math.round(time);
 
-    var minutes = Math.floor(time / 60),
-        seconds = time - minutes * 60;
+	var minutes = Math.floor(time / 60),
+		seconds = time - minutes * 60;
 
-    seconds = seconds < 10 ? '0' + seconds : seconds;
+	seconds = seconds < 10 ? '0' + seconds : seconds;
 
-    return minutes + ":" + seconds;
+	return minutes + ":" + seconds;
 
 }
+
+
+$('input[type="submit"]').mousedown(function(){
+  $(this).css('background', '#2ecc71');
+});
+$('input[type="submit"]').mouseup(function(){
+  $(this).css('background', '#1abc9c');
+});
+
+$('#loginform').click(function(){
+  $('.login').fadeToggle('slow');
+  $(this).toggleClass('green');
+});
+
+
+
+$(document).mouseup(function (e)
+{
+    var container = $(".login");
+
+    if (!container.is(e.target) // if the target of the click isn't the container...
+        && container.has(e.target).length === 0) // ... nor a descendant of the container
+    {
+        container.hide();
+        $('#loginform').removeClass('green');
+    }
+});
