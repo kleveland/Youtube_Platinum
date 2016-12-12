@@ -1306,8 +1306,7 @@ div #slider {
 	display: inline-block;
 	width: 49%;
 	border: none;
-	margin-top: 7.5px;
-	margin-bottom: 7.5px;
+	margin-bottom: 5px;
 }
 
 .playlist-thumb {

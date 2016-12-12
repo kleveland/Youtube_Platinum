@@ -107,16 +107,12 @@ function togglePlay() {
 function vidStateChange(event) {
 	console.log("STATE WAS CHANGED");
 	console.log("TIME: ", player.getCurrentTime());
-	if (event.data === 0 && playqueue) {
-		console.log("QUEUE", queue);
-		queue.splice(0, 1);
-		populateQueue();
-		if (queue.length == 0) {
-			resetQueue();
-		} else {
-			player.loadVideoById(queue[0], 0, "large");
+	/*if (event.data === 0 && playqueue) {
+		if (++queueindex >= queue.length) {
+			queueindex = queue.length - 1;
 		}
-	}
+		player.loadVideoById(queue[queueindex], 0, "large");
+	}*/
 
 	updateProgressBar();
 	updateTimerDisplay();
@@ -180,6 +176,30 @@ $(document).ready(function () {
 		}
 		togglePlay();
 	});
+
+	$('#backward').click(function () {
+		if (playqueue) {
+			if (--queueindex < 0) {
+				queueindex = 0;
+			}
+			console.log("QUEUEINDEX", queueindex);
+			player.loadVideoById(queue[queueindex], 0, "large");
+		} else {
+			player.seekTo(0);
+		}
+	})
+
+	$('#forward').click(function () {
+		if (playqueue) {
+			if (++queueindex >= queue.length) {
+				queueindex = queue.length - 1;
+			}
+			player.loadVideoById(queue[queueindex], 0, "large");
+		} else {
+
+			player.seekTo(player.getDuration());
+		}
+	})
 
 	$('#addplaylist').click(function () {
 		$(".modal-title").text("Add Playlist");
@@ -262,19 +282,73 @@ $(document).ready(function () {
 	$('#removequeue').click(function () {
 		console.log("REMOVING FROM QUEUE");
 		if ($('#queuevideos').has('.selectedvid').length != 0) {
-			var index = queue.indexOf($('.selectedvid').attr('id'));
-			queue.splice(index, 1);
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+
+			console.log("INDEx", index);
+			console.log("QUEUE", queue);
+			if (index != -1) {
+				queue.splice(index, 1);
+			}
 		}
 		populateQueue();
 	});
 
+	var paused;
 	$('#playqueue').click(function () {
-		if (queue.length != 0) {
-			playqueue = true;
-			$('#playqueue').removeClass('btn-primary');
-			$('#playqueue').addClass('btn-success');
-			$('#playqueue').text("Stop Queue");
-			player.loadVideoById(queue[0], 0, "large");
+		if (playqueue) {
+			if (paused) {
+				paused = false;
+				player.playVideo();
+			} else {
+				paused = true;
+				player.pauseVideo();
+			}
+		} else {
+			if (queue.length != 0) {
+				playqueue = true;
+				$('#playqueue').toggleClass('btn-primary');
+				$('#playqueue').toggleClass('btn-success');
+				$('#playqueue').text("Play/Pause Queue");
+				player.loadVideoById(queue[queueindex], 0, "large");
+			}
+		}
+	})
+
+	$('#stopqueue').click(function () {
+		playqueue = false;
+		$('#playqueue').removeClass('btn-success');
+		$('#playqueue').removeClass('btn-primary');
+		$('#playqueue').addClass('btn-primary');
+		$('#playqueue').text('Play Queue');
+		player.stopVideo();
+	})
+
+	$('#upqueue').click(function () {
+		console.log("MOVING DOWN");
+		if ($('#queuevideos').has('.selectedvid').length != 0) {
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+			console.log("INDEX", index);
+			console.log("QUEUE", queue);
+			var temp = queue[index];
+			if ((index - 1) >= 0) {
+				queue[index] = queue[index - 1];
+				queue[index - 1] = temp;
+			}
+			populateQueue();
+		}
+	})
+	$('#downqueue').click(function () {
+		if ($('#queuevideos').has('.selectedvid').length != 0) {
+			console.log("MOVINGUP");
+			var index = queue.indexOf($('.selectedvid').parent().attr('id'));
+			console.log("INDEX", index);
+			console.log("QUEUE", queue);
+			var temp = queue[index];
+			if ((index + 1) < queue.length) {
+				queue[index] = queue[index + 1];
+				queue[index + 1] = temp;
+			}
+			populateQueue();
 		}
 	})
 
@@ -294,7 +368,7 @@ $(document).ready(function () {
 			});
 			$('#modalcont').modal('hide');
 		})
-	})
+	});
 
 
 
