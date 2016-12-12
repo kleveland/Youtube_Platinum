@@ -23,6 +23,7 @@ module.exports = function (app, passport) {
 		User.updateUser(req.user.id, req.body, function (dat) {
 			console.log("SUCCESS UPDATE");
 			console.log("NEWUSER", dat);
+			dat.id = req.user.id;
 			req.login(dat, function (err) {
 
 			});

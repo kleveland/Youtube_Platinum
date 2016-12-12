@@ -142,8 +142,6 @@ ul.img-container img {
 	padding: 10px 5px 10x 5px;
 	margin-top: 20px;
 	background-color: #4d5d6c;
-	overflow-x: scroll;
-	overflow-y: hidden;
 	 white-space: nowrap;
 }
 
