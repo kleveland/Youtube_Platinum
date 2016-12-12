@@ -235,7 +235,7 @@ $(document).ready(function () {
 	//PLAY QUEUE CONTROLS
 	$('#addqueue').click(function () {
 		console.log("ADDING TO QUEUE");
-		queue.push(player.getVideoData()['video_id']);
+		queue.push($('.selectedvid').parent().attr('id'));
 		populateQueue();
 	})
 
