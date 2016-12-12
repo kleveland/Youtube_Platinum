@@ -2,7 +2,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>YouTube Platinum Login</title>
+	<title>YouTube Platinum</title>
 	<meta name="keywords" content="" />
 	<meta name="description" content="" />
 	<meta name="Author" content="" />
@@ -112,7 +112,7 @@
 					</div>
 					<div class="col-md-8">
 						<div class="currentvideo">
-							<iframe id="vidplayer" class="video" width="640" height="360" src="https://www.youtube.com/embed/UqyT8IEBkvY?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
+							<iframe id="vidplayer" class="video selectedvid" width="640" height="360" src="https://www.youtube.com/embed/UqyT8IEBkvY?enablejsapi=1&showinfo=0&controls=0" frameborder="0" allowfullscreen></iframe>
 						</div>
 					</div>
 					<div class="col-md-2">
@@ -121,11 +121,15 @@
 							<div class="texthead">Play Queue</div>
 							<div id="queuevids">
 								<button id="playqueue" type="button" class="songbut btn btn-primary">Start Queue</button>
-								<button id="queueoptions" type="button" class="songbut btn btn-primary">Queue Options</button>
+								<button id="stopqueue" type="button" class="songbut btn btn-primary">Stop Queue</button>
 								<button id="exportqueue" type="button" class="songbut btn btn-primary">Export Queue</button>
 								<div class="songbutcont">
 									<button id="addqueue" type="button" class="songbut50 btn btn-primary">Add</button>
 									<button id="removequeue" type="button" class="songbut50 btn btn-primary">Remove</button>
+								</div>
+								<div class="songbutcont">
+									<button id="upqueue" type="button" class="songbut50 btn btn-success">Up</button>
+									<button id="downqueue" type="button" class="songbut50 btn btn-success">Down</button>
 								</div>
 								<div id="queuevideos">
 								</div>
