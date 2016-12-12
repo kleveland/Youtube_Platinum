@@ -1464,10 +1464,13 @@ div::-webkit-scrollbar-thumb
 }
 
 h2 {
-  	padding: 20px;
-	font-size: 200%;
-  	color: #ecf0f1;
-  	text-align: center;
+
+  padding: 20px;
+    font-size: 200%;
+
+
+  color: #ecf0f1;
+  text-align: center;
 }
 
 h3 {
@@ -1509,7 +1512,7 @@ fieldset {
 .formholder {
   	background: #ecf0f1;
 	width: 50%;
-  	max-width: 3500px; max-height: 3500; margin: auto;
+  	max-width: 3500px; max-height: 3500px; margin: auto;
   	border-radius: 5px;
   	padding-top: 5px;
 }
@@ -1517,6 +1520,7 @@ fieldset {
   	outline: none;
   	box-shadow: 0 0 1px 1px #1abc9c;
 }
+
 
 .randompad {
   	padding: 10px;
