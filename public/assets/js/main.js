@@ -103,6 +103,12 @@ function updateUser() {
 
 $(document).ready(function () {
 
+	$.get('/userinfo', function (data) {
+		$('.brand-name').html(data.first + " " + data.last);
+		$('.profile-picture').attr("src", data.prof_img);
+
+	});
+
 	populatePlaylists();
 
 	$('#playpause').click(function () {
