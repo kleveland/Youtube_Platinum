@@ -1,5 +1,5 @@
 var request = require('request');
-var apikey = 'AIzaSyDR_Fj72POZbVD4mFnhmLuC4p7ULWG1JXE';
+var apikey = 'API KEY HERE';
 module.exports = function (app, passport) {
 	app.post('/search',function(req,res) {
 		req.body.dat;
